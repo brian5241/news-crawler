@@ -1,0 +1,215 @@
+﻿id,name,cat,url,url_kind,status,encoding,extractor,ok,title,text_length,len_precision,len_recall,date,author,publisher,error,elapsed
+002,프레시안,종합/방송/통신,https://www.pressian.com/pages/articles/2026100617532374361,article,200,utf-8-sig,trafilatura,True,"예멘 정부군, 홍해 길목 탈환…원유 공급 숨통 트일까",2837,2837,2837,2026-10-06 21:11,김효진 기자,프레시안,,0.89
+005,국민일보,종합/방송/통신,https://www.kmib.co.kr/article/keyword.asp?kwd=,article,200,utf-8-sig,trafilatura,True,핫이슈,1002,1002,1002,2026-10-07,송세영 특파원,kmib.co.kr,,3.68
+006,미디어오늘,종합/방송/통신,https://www.mediatoday.co.kr/news/articleView.html?idxno=337557,article,200,utf-8-sig,trafilatura,True,"이재명 대통령 SNS와 청와대, ‘소통’의 한계?",2418,2418,2418,2026-10-06 22:45,노지민 기자,미디어오늘,,0.63
+008,머니투데이,종합/방송/통신,https://menu.mt.co.kr/mt24/assets/20261006155555/app-BcUzOlo9.css,non-article,200,utf-8-sig,none,False,,0,0,0,,,,non-HTML content,0.14
+011,서울경제,종합/방송/통신,https://www.sedaily.com/article/20098675,article,200,utf-8-sig,trafilatura,True,[단독] K반도체 ‘美 특허소송’ 역대 최다,2004,2004,2004,2026-10-06 17:44,김태호 기자,서울경제,,1.44
+013,연합인포맥스,경제/IT,https://news.einfomax.co.kr/news/articleView.html?idxno=4437992,article,200,utf-8-sig,trafilatura,True,美 국채가 상승…佛 재정 불안 완화에 연동,1090,1090,1090,2026-10-07 00:33,진정호 기자,연합인포맥스,,0.88
+014,파이낸셜뉴스,종합/방송/통신,https://www.fnnews.com/section/002001002002,article,200,utf-8-sig,trafilatura,True,금융 증권 | 파이낸셜뉴스,19324,19324,19324,2026-10-06,강중모 기자,파이낸셜뉴스,,1.19
+015,한국경제,종합/방송/통신,https://www.hankyung.com/premium9/0100001,article,403,utf-8-sig,none,False,,,,,,,,HTTP 403,0.05
+016,헤럴드경제,종합/방송/통신,https://biz.heraldcorp.com/article/10894831,article,200,utf-8-sig,trafilatura,True,유럽 오페라의 별이자 아프리카의 ‘루세케로’…메조소프라노 김청자 별세,1270,1270,1270,2026-10-07 00:11,고승희,헤럴드경제,,1.16
+018,이데일리,종합/방송/통신,https://www.edaily.co.kr/News/Read?newsId=01262806645610624,article,200,utf-8-sig,trafilatura,True,"[美특징주]프록터앤갬블(P&G), 상승…에버코어 긍정적 평가",906,906,906,2026-10-07 01:11,안혜신 기자,이데일리,,1.81
+020,동아일보,종합/방송/통신,https://www.donga.com/news/Economy/article/all/20261006/134796412/2,article,200,utf-8-sig,trafilatura,True,"“원유 재고 회복 최대 2년”… 각국, 에너지 수출 빗장",1721,1721,1721,2026-10-07 00:30,이동훈,동아일보,,4.55
+021,문화일보,종합/방송/통신,https://www.munhwa.com/article/11621769,article,200,utf-8-sig,trafilatura,True,[속보]요양병원서 같은 병실 환자 살해한 70대 남성…징역 15년 선고,674,674,674,2026-10-07 00:45,유현진 기자,문화일보,,0.66
+022,세계일보,종합/방송/통신,https://www.segye.com/newsView/20261007500155,article,200,utf-8-sig,trafilatura,True,"與 ""조희대, 국가원수 맞먹으면 안돼""·野 ""대통령 대법관쇼핑""",2984,2984,2984,2026-10-07 01:07,최평천,세계일보,,0.36
+023,조선일보,종합/방송/통신,https://www.chosun.com/members-event/?mec=event&mes=exception/1259787_7736,non-article,200,utf-8-sig,trafilatura:short,True,조선일보 이벤트,197,197,0,2026-10-07,,조선일보,,5.9
+024,매경이코노미,전문지,https://www.mk.co.kr/rss/,non-article,403,utf-8-sig,none,False,,,,,,,,HTTP 403,0.03
+025,중앙일보,종합/방송/통신,https://www.joongang.co.kr/article/25467605,article,200,utf-8-sig,trafilatura,True,"[단독] 김민재·황인범·황희찬, 동료에게 국대 은퇴 폭탄 발언 | 중앙일보",988,988,988,2026-10-06 23:13,"박린, 피주영",중앙일보,,1.62
+028,한겨레,종합/방송/통신,https://www.hani.co.kr/arti/economy/it/1281224.html,article,200,utf-8-sig,trafilatura,True,"배경훈, 아모데이 ‘AI 위험’ 경고에 “이율배반적…투자 부담 느낀 듯”",1652,1652,1652,2026-10-06 23:32,강재구,한겨레,,1.28
+029,디지털타임스,종합/방송/통신,https://www.dt.co.kr/article/12087785,article,200,utf-8-sig,trafilatura,True,"트럼프, 총기난사 미군 총살형 승인…“심판의 날 왔다”",948,948,948,2026-10-06 23:46,"디지털타임스, 박양수",디지털타임스,,1.64
+030,전자신문,종합/방송/통신,https://www.etnews.com/20261006000318,article,200,utf-8-sig,trafilatura,True,'침투테스트 AI'로 누구나 보안망 뚫는다,1439,1262,1262,2026-10-06 14:47,박진형 기자,미래를 보는 창 - 전자신문,,1.31
+031,아이뉴스24,종합/방송/통신,http://www.inews24.com/list/020100,non-article,200,utf-8-sig,trafilatura,True,아이뉴스24 : it,3400,3400,3731,2026-09-01,아이뉴스,아이뉴스24,,1.24
+032,경향신문,종합/방송/통신,https://www.khan.co.kr/issue/articles/ah976,non-article,200,utf-8-sig,trafilatura,True,이슈 | 미국 중간선거,4925,5055,5055,2012-03-22,,경향신문,,5.26
+038,한국일보,종합/방송/통신,https://www.hankookilbo.com/news/article/A2026100614590004945?dtypecode=pancode_main,article,200,utf-8-sig,trafilatura,True,"침묵 깬 조희대, 헌법 적힌 A4 꺼냈다…계엄·업추비 논란도 직접 해명-사회ㅣ한국일보",2011,2011,2011,2026-10-06 18:30,조소진 기자,한국일보,,2.01
+040,코리아타임스,영자/외국어,https://www.koreatimes.co.kr/world/20261007/ukraine-fires-nearly-900-drones-at-russia-as-kyiv-braces-for-expected-huge-aerial-attack?utm_source=rss,article,200,utf-8-sig,trafilatura,True,Ukraine fires nearly 900 drones at Russia as Kyiv braces for expected huge aeria,6162,6162,6162,2026-10-07 00:31,AP,The Korea Times,,0.58
+042,데일리한국,경제/IT,https://daily.hankooki.com/news/articleView.html?idxno=1412494,article,200,utf-8-sig,trafilatura,True,금융사 이어 교회까지…대형 교회 2곳 사이버 공격 정황,979,979,979,2026-10-06 21:40,최동수 기자,데일리한국,,1.24
+044,코리아헤럴드,종합/방송/통신,https://www.koreaherald.com/article/10894816,article,200,utf-8-sig,trafilatura,True,Busan film fest opens with modest indie after being dragged into a political spa,4700,4700,4700,2026-10-06 23:12,Moon Ki-hoon,The Korea Herald,,1.63
+050,한경비즈니스,전문지,https://magazine.hankyung.com/business/tag/20160812182448963,non-article,200,utf-8-sig,trafilatura,True,한경비즈니스,13347,13347,13347,2026-10-06,한경비즈니스,magazine.hankyung.com,,2.91
+057,MBN,종합/방송/통신,https://www.mbn.co.kr/pages/news/newsView.php?category=mbn00006&news_seq_no=5223389,article,200,utf-8-sig,trafilatura,True,"국회 외통위, 한미 관계 공방 ″입국 거부″ ″사실 아냐″",747,747,747,2026-10-06 23:10,백길종,MBN,,2.73
+073,스포츠서울,종합/방송/통신,https://www.sportsseoul.com/news/read/1639486,article,200,utf-8-sig,trafilatura,True,"우려·비판·연령 지적 딛고 거둔 ‘4연패’인데…‘병역 혜택’ 언행 논란으로 ‘찬물’, 의미도 ‘퇴색’[SS나고야결산④]",1188,1188,1311,2026-10-06 05:30,박준범 기자,스포츠서울,,2.2
+075,맥스무비,전문지,https://www.maxmovie.com/news/articleView.html?idxno=502242,article,200,utf-8-sig,trafilatura,True,"양자경, 부산 뜬다…‘아시아영화인상’ 수상부터 GV까지 [BIFF] - 맥스무비닷컴",647,647,647,2026-10-06 17:22,김보라 기자,맥스무비닷컴,,1.1
+076,스포츠조선,종합/방송/통신,https://www.sportschosun.com/football/2026-10-07/202610060100044070002844,article,200,utf-8-sig,trafilatura,True,"한국 축구 최대 문제, 황인범은 1명뿐이다...그리고 그는 1996년생이다",1459,1459,1459,2026-10-07 01:11,김대식,스포츠조선,,1.56
+081,서울신문,종합/방송/통신,https://www.seoul.co.kr/news/international/2026/08/11/20260811500296,article,200,utf-8-sig,trafilatura,True,러 연료난 때 울산서 정제유 3만t 빼갔다? 극동행 1→9회…의심 선박도 포착 [배틀라인],2398,2398,2398,2026-08-11 21:25,권윤희 기자,서울신문,,2.45
+083,광주일보,인터넷,http://www.kwangju.co.kr/ad_view.php?aid=1471,non-article,200,utf-8-sig,none,False,,0,0,0,,,,non-HTML content,0.03
+087,강원일보,인터넷,https://www.kwnews.co.kr/article/202410100092842,article,200,utf-8-sig,trafilatura,True,“고성해변길 맨발로 걸으며 힐링하세요”,783,783,933,2024-10-10,권원근 기자,강원일보,,2.43
+088,매일신문,종합/방송/통신,https://www.imaeil.com/page/view/2026100622455863143,article,200,utf-8-sig,trafilatura,True,'대부분이 산부인과' 국내 병원 CCTV…해외 음란물 사이트에 유출,715,715,715,2026-10-06 23:08,김유진 기자,매일신문,,2.18
+089,대전일보,인터넷,https://www.daejonilbo.com/news/articleView.html?idxno=2305406,article,200,utf-8-sig,trafilatura,True,"충청 지역민 10명 중 9.5명, '충남대병원 암병원 건립' 필요",1983,1983,1983,2026-10-07 00:05,우세영 기자,대전일보,,0.96
+092,지디넷코리아,종합/방송/통신,https://zdnet.co.kr/view/?no=20261006231014,article,200,utf-8-sig,trafilatura,True,커리앤브라운 연구: 불확실성으로 전 세계 건설 비용 약 2조 달러 증가,1614,1614,1614,2026-10-06 23:10,글로벌뉴스,ZD넷 코리아,,0.7
+094,월간 산,전문지,http://san.chosun.com/news/articleView.html?idxno=26176,article,200,utf-8-sig,trafilatura,True,그래도 우리는 보살피련다 [파타고니아 환경지킴이 5인 인터뷰],12086,12086,12086,2026-10-06 07:45,윤성중,월간산,,0.75
+109,OSEN,종합/방송/통신,https://www.osen.co.kr/article/G1112887658,article,200,utf-8-sig,trafilatura,True,"'나혼산' 김민, 설정 아니었다..실제 목격담 보니 그 가운에 그 바지",642,642,642,2026-10-05 10:24,장우영,osen.co.kr,,1.14
+117,마이데일리,종합/방송/통신,https://www.mydaily.co.kr/page/view/2026100620104861310,article,200,utf-8-sig,trafilatura,True,"안유진, 173cm인데 핫팬츠 입으니 이 정도…파리서 뽐낸 끝없는 '각선미'",814,814,826,2026-10-07,김하영 기자,마이데일리,,1.58
+120,EBN,경제/IT,https://www.ebn.co.kr/news/articleView.html?idxno=1726897,article,200,utf-8-sig,trafilatura,True,[EBN 오늘(6일) 이슈 종합] 美 의약품 관세 일주일…K바이오 생존법 된 'Made in USA' 등 - 이비엔(EBN)뉴스센터,2581,2581,2581,2026-10-06 20:22,김동하 기자,이비엔(EBN)뉴스센터,,1.23
+122,법률신문,전문지,https://www.lawtimes.co.kr/news/articleView.html?idxno=227333,article,200,utf-8-sig,trafilatura,True,압류금지 ‘생계비계좌’ 급여통장도 된다 - 법률신문,544,544,544,2026-10-06 18:01,박성동 기자,법률신문,,0.82
+123,조세일보,경제/IT,http://www.joseilbo.com/news/news_read.php?class=7&uid=576922,article,200,cp949,trafilatura,True,"법인세율 인하 질문에 이형일 ""세수 지속될지 봐야"" - 조세일보",1041,0,0,2026-10-06 18:01,,joseilbo.com,,0.95
+135,시사저널,전문지,https://www.sisajournal.com/news/articleView.html?idxno=389316,article,200,utf-8/replace,trafilatura,True,"“제2 윤석열 꿈꾸나”…범여권, 국감서 ‘조희대 맹폭’ - 시사저널",2445,2445,2445,2026-10-06 23:19,박성의 기자,시사저널,,0.79
+138,디지털데일리,매거진,https://www.ddaily.co.kr/page/view/2026100618532680968,article,200,utf-8-sig,trafilatura,True,과방위 국감 '결정타' 없었다…AI·해킹 현안 ‘겉핥기’ (종합) [2026 국감],4670,4670,4755,2026-10-06,"강소현 기자, 채성오 기자, 왕진화 기자, 오병훈 기자",디지털데일리,,1.42
+139,스포탈코리아,지역,https://www.sportalkorea.com/news/articleView.html?idxno=2025052909553593714,article,200,utf-8-sig,trafilatura,True,"""활동은 늘고, 수당은 전국 평균 밑""…원주시의원 보수 개선되나",1402,1402,1402,2026-10-06 17:49,신관호 기자,스포탈코리아,,0.75
+140,씨네21,전문지,https://cine21.com/news/view/?mag_id=110837,article,200,utf-8-sig,trafilatura,True,[커버] 애니메이션이어야만 닿을 수 있는 영역으로 - 웹툰 <전자오락수호대>가 애니메이션으로 재탄생하기까지,767,767,767,2026-10-06 14:05,글 남선우,씨네21,,1.13
+143,쿠키뉴스,경제/IT,https://www.kukinews.com/article/view/kuk202610070001,article,200,utf-8-sig,trafilatura,True,"“도롱뇽, 낙엽 분해 곤충 섭식해 탄소 저장 역할”",637,637,637,2026-10-07,정우진,쿠키뉴스,,3.29
+144,스포츠경향,지역,https://sports.khan.co.kr/article/202610062149003,article,200,utf-8-sig,trafilatura,True,"도하의 18세 소년, 15년9개월 걸려 차붐 넘었다…손흥민, 한국 남자축구 A매치 최다골 단독 1위로, 한국도 우즈베키스탄에 2-0 완승",1276,1276,1276,2026-10-06 21:49,윤은용 기자,스포츠경향,,1.07
+213,TV리포트,지역,https://tvreport.co.kr/world/article/1081130/,article,200,utf-8-sig,trafilatura,True,"마이클 더글라스, 불륜 상대가 몇 명이야.. '원초적 본능' 여배우와도 외도 인정 [할리웃통신]",1226,1226,1226,2026-10-07 00:30,이혜미,TV리포트,,0.99
+241,일간스포츠,종합/방송/통신,https://isplus.com/article/view/isp202610060199,article,200,utf-8-sig,trafilatura,True,[IS 피플] 야구 인생 2회차? 역대급 재능 1순위 신인이 강조한 배움·배움·배움...신드롬 예고한 하현승 - 일간스포츠,1374,1374,0,2026-10-07 00:12,,일간스포츠,,2.04
+243,이코노미스트,경제/IT,https://economist.co.kr/article/view/ecn202610060053,article,200,utf-8-sig,trafilatura,True,"클레온, AI 디지털 휴먼 대화 훈련 플랫폼 ‘롤핏 스튜디오’ 출시",780,0,0,2026-10-06 18:15,이코노미스트,이코노미스트,,2.26
+277,아시아경제,종합/방송/통신,https://www.asiae.co.kr/article/2026100700152312268,article,200,utf-8-sig,trafilatura,True,"영화의 물결, 부산에 닿다",1842,1842,1842,2026-10-07 00:15,이종길,아시아경제,,1.95
+293,블로터,종합/방송/통신,https://www.bloter.net/news/articleView.html?idxno=675111,article,200,utf-8-sig,trafilatura,True,[삼성바이오 유증 후폭풍] 물산·전자 추가 지원 없다…믿을건 차입,2890,2890,2890,2026-10-06 19:50,주샛별 기자,블로터,,0.95
+296,코메디닷컴,전문지,https://kormedi.com/2879805/,article,200,utf-8-sig,trafilatura,True,“같은 바나나인데 혈당 반응 다르다” 초록색 vs 노란색⋯ 무슨 차이? - 코메디닷컴,1349,1349,1349,2026-10-07 00:02,최지혜 기자,코메디닷컴,,0.86
+301,광남신문,인터넷,http://www.gjdream.com/news/articleView.html?idxno=673235,article,200,utf-8-sig,trafilatura,True,연휴 끝나도 ‘자리 없다’…이기는 KIA에 광주 들썩,2316,2316,2316,2026-10-07 00:10,박현아 기자,광남신문,,0.99
+308,시사IN,종합/방송/통신,https://www.sisain.co.kr/news/articleView.html?idxno=58615,article,200,utf-8-sig,trafilatura,True,김성태 “한동훈 단독 플레이에 국힘 ‘우리가 왜 끼냐’ 분위기 있어” [김은지의 뉴스IN],7509,7509,7509,2026-10-06 08:21,나경희 기자,시사IN,,0.73
+310,여성신문,전문지,https://www.womennews.co.kr/news/articleView.html?idxno=282986,article,200,utf-8-sig,trafilatura,True,제19회 의암주논개상 수상자에 김미애 엔타스 대표 추대,1232,1232,1232,2026-10-06 18:59,신미정 기자,여성신문,,1.01
+311,엑스포츠뉴스,지역,https://www.xportsnews.com/article/2204521,article,200,utf-8-sig,trafilatura,True,"'나혼산' 김민, 조작설 입 열었다 ""설정 정말 없다, 마음 무거워"" [엑's 이슈]",1447,1447,1426,2026-10-06 18:23,김현정,엑스포츠뉴스,,1.44
+312,텐아시아,지역,https://www.tenasia.co.kr/article/2026100665924,article,200,utf-8-sig,trafilatura,True,"'김용건 며느리' 황보라, 출산 후 처음 받은 생일파티에 폭풍 오열 ('보라이어티') | 텐아시아",1242,0,0,2026-10-06 22:48,김은정,텐아시아,,0.92
+314,스포츠동아,지역,https://sports.donga.com/ent/article/all/20261006/134791305/1,article,200,utf-8-sig,trafilatura,True,"[공식] ‘장윤정♥’ 도경완, ‘편스토랑’으로 KBS 복귀…5년8개월만",841,757,757,2026-10-06 10:04,홍세영,스포츠동아,,0.78
+326,KBS World,종합/방송/통신,http://world.kbs.co.kr/vietnamese/news/news_Po_detail.htm?No=32886,article,404,utf-8-sig,none,False,,,,,,,,HTTP 404,0.03
+327,뉴데일리,종합/방송/통신,http://www.newdaily.co.kr/site/data/html/2026/10/06/2026100600291.html,article,200,utf-8-sig,trafilatura,True,잔혹한 이발사 '스위니토드' 돌아온다…조승우·전미도 출연,1446,1446,1446,2026-10-07 00:00,신성아 기자,뉴데일리,,1.13
+328,에이블뉴스,전문지,https://www.ablenews.co.kr/news/articleView.html?idxno=233688,article,200,utf-8-sig,trafilatura,True,"제품을 구별하는 접근성에서, 알고 선택하는 소비생활로",4737,4737,4737,2026-10-06 17:22,칼럼니스트 김경식,에이블뉴스,,1.24
+329,소년한국일보,전문지,https://www.kidshankook.kr/news/articleView.html?idxno=18430,article,200,utf-8-sig,trafilatura,True,‘침묵의 사냥꾼’ 식충식물의 세계로,2077,2077,2077,2026-10-06 04:43,서원극 Wk,소년한국일보,,1.34
+330,중앙데일리,종합/방송/통신,https://www.koreajoongangdaily.com/lifestyle/seoul-to-celebrate-580th-hangul-day-with-week-long-festivities/12902702,article,200,utf-8-sig,trafilatura,True,Seoul to celebrate Hangul Day with week long festivities,2032,2032,2032,2026-10-02 18:14,LEE JI-WON,koreajoongangdaily,,1.4
+331,충청투데이,인터넷,https://www.cctoday.co.kr/news/articleView.html?idxno=2237905,article,200,utf-8-sig,trafilatura,True,서산 대산읍 폐기물 재활용 공장 불 17시간 40분 만에 완진(종합),647,647,647,2026-10-06 20:36,조진오 기자,충청투데이,,1.21
+333,경남신문,인터넷,http://www.knnews.co.kr/news/articleView.php?idxno=1067243,article,200,utf-8-sig,meta-only,False,네이버 뉴스스탠드 설정하기,0,0,0,2013-04-03 16:03,,경남신문,,4.71
+334,제주의소리,인터넷,https://www.jejusori.net/news/articleView.html?idxno=507142,article,200,utf-8-sig,trafilatura,True,‘제주 가문잔치’ K-FOOD 챔피언십 금메달 쾌거 - 제주의소리,672,672,672,2026-10-06 18:20,김정호 기자,제주의소리,,1.03
+335,강원도민일보,인터넷,https://www.kado.net/news/articleView.html?idxno=2076809,article,200,utf-8-sig,trafilatura,True,강원 선배·후배시민 한마음 정책 제안 ‘세대 융합’ - 강원도민일보,938,938,938,2026-10-07 00:02,"강원도민일보, 김진형",강원도민일보,,1.35
+336,전북일보,인터넷,https://www.jjan.kr/seriesList2/013447,article,200,utf-8-sig,trafilatura,True,전북일보 인터넷신문,692,692,692,2026-10-06,전북일보 인터넷신문,전북일보 인터넷신문,,2.71
+337,경북일보,인터넷,https://www.kyongbuk.co.kr/news/articleView.html?idxno=4086423,article,200,utf-8-sig,trafilatura,True,"의성 스카이디펜스런, 3인 1조 협동 레이스로 차별화",1332,1332,1332,2026-10-06 21:03,김동현 기자,경북일보,,1.04
+338,경인일보,인터넷,https://www.kyeongin.com/article/1772091,article,200,utf-8-sig,trafilatura,True,손끝으로 읽는 한글 점자 100년… 국립세계문자박물관 특별전 ‘점에서 세상으로’,2224,2224,2224,2026-10-06 20:28,"경인일보, 김성호",경인일보,,1.13
+339,경기일보,인터넷,https://www.kyeonggi.com/article/20261006580584,article,200,utf-8-sig,trafilatura,True,금융권 이어 대형교회도 털렸다…교인정보 최대 100만건 유출 가능성도,2142,2142,0,2026-10-06,경기일보(Kyeonggi Daily News,경기일보,,1.72
+340,OBS,스포츠/연예,https://www.obsnews.co.kr/news/articleView.html?idxno=1539675,article,200,utf-8-sig,trafilatura,True,[OBS 뉴스10 인천경기] 전체 보기,382,382,382,2026-10-06 22:35,OBS경인TV webmaster co kr 기자의 다른 기사,OBS경인TV,,1.98
+344,EBS,스포츠/연예,https://home.ebs.co.kr/ebsnews/menu1/newsAllView/60776163/H?eduNewsYn=N&newsFldDetlCd=,article,200,utf-8-sig,trafilatura,True,"EBS뉴스 - 교제폭력, '사랑' 아닌 범죄…보호 대책은?",4476,4476,4516,2026-10-06,박광주 기자,home.ebs.co.kr,,3.88
+345,디자인정글,전문지,http://jungle.co.kr/magazine/207079,article,200,utf-8-sig,trafilatura,True,[디자인정글 편집인의 시선] 낡은 축구장에 새로운 삶을 심다 — 타이베이에서 발견한 도시재생의 지혜,5402,5402,5402,2026-09-15,"모든기사 보기, 이메일 보내기 정석원 편집주간",jungle.co.kr,,1.39
+346,헬스조선,전문지,https://health.chosun.com/site/data/html_dir/2026/10/06/2026100602636.html,article,200,utf-8-sig,trafilatura,True,“마운자로 효과 높인다”… ‘12kg 감량 성공’ 곽범이 추천한 방법,1257,1149,1149,2026-10-07 01:00,이아라 기자,헬스조선,,0.37
+353,중앙SUNDAY,경제/IT,https://www.joongang.co.kr/article/25466794,article,200,utf-8-sig,trafilatura,True,빌라 공급 4분의 1토막…다주택자 옥죄니 청년이 운다 | 중앙일보,3657,3657,3657,2026-10-03 00:10,황정일,중앙일보,,0.94
+354,엘르,전문지,https://www.elle.co.kr/article/1910995,article,200,utf-8-sig,trafilatura,True,아침저녁 쌀쌀해지면 ‘이 니트’가 가디건만큼 요긴하대요,1257,1257,1257,2026-10-06,임채원,ELLE,,2.33
+355,사이언스타임즈,전문지,https://www.sciencetimes.co.kr/cms/content/view/282,article,200,utf-8-sig,trafilatura,True,사이언스타임즈/사용자메뉴/개인정보처리방침/개인정보처리방침,5578,5145,5145,2023-11-17,,sciencetimes.co.kr,,2.52
+361,채널예스,전문지,https://ch.yes24.com/article/details/83349,article,200,utf-8-sig,trafilatura,True,"2026 대한민국 그림책상 대상, 『지렁이 키우지렁』 | 예스24 | 예스24 채널예스",3528,3528,3528,2026-10-06,글 출판사 제공 사진 출판사 제공,ch.yes24.com,,1.55
+363,동아사이언스,전문지,https://image.dongascience.com/Photo/2026/10/17908158084825.jpg,non-article,200,utf-8/replace,none,False,,0,0,0,,,,non-HTML content,0.07
+364,디지털포스트(PC사랑),전문지,https://www.ilovepc.co.kr/news/articleView.html?idxno=60875,article,200,utf-8-sig,trafilatura,True,전통적 요소와 만난 포켓몬 팝업... '피카츄의 가을 나들이' [테크 핫플레이스],1418,1418,1418,2026-10-06 19:21,남지율 기자,디지털포스트(PC사랑 AI Edition),,1.27
+368,데일리안,종합/방송/통신,https://www.dailian.co.kr/news/view/1698519/,article,200,utf-8-sig,trafilatura,True,대법원 국감서 여야 충돌…'대법관 재제청'부터 계엄·예산까지 공방,2270,2270,2270,2026-10-07 00:16,김남하,데일리안,,1.88
+376,지지통신,스포츠/연예,https://www.jiji.com/jc/article?k=2026100601124&g=soc&m=rss,article,200,utf-8-sig,trafilatura,True,千葉大教授ら「大変うれしい」 アイスキューブ参加―ノーベル賞：時事ドットコム,432,432,401,2026-10-06 23:03,,時事通信社,,2.44
+384,한국대학신문,전문지,https://news.unn.net/news/articleView.html?idxno=598314,article,200,utf-8-sig,trafilatura,True,"경운대, ‘외국인유학생 취·창업 초광역 포럼’ 개최…지역 정주 인재 양성 모색",1089,1089,1089,2026-10-06 15:43,이정환 기자,한국대학신문 - 411개 대학을 연결하는 '힘',,1.22
+387,인천일보,인터넷,https://www.incheonilbo.com/news/articleView.html?idxno=1333599,article,200,utf-8/replace,trafilatura,True,[포토] 훈맹정음 100주년 '점으로 밝힌 세상',422,422,422,2026-10-06 20:22,이재민 기자,인천일보,,2.25
+388,전남일보,인터넷,https://www.jnilbo.com/news/articleView.html?idxno=90000071153,article,200,utf-8-sig,trafilatura,True,"함평군, 기산 둘레길 현장점검 순환형 산책길 완성 박차 - 전남일보",702,702,702,2026-10-07 01:10,신재현 기자,전남일보,,1.39
+389,제주도민일보,인터넷,https://www.jejudomin.co.kr/news/articleView.html?idxno=400898,article,200,utf-8-sig,trafilatura,True,G20 정상회의 제주 유치 조직 대폭 확대 - 제주도민일보,2131,2131,2131,2026-10-06 17:20,최병근 기자,제주도민일보,,0.97
+391,충청일보,인터넷,https://www.ccdailynews.com/news/articleView.html?idxno=2444923,article,200,utf-8-sig,trafilatura,True,"제천시, 한방엑스포공원에 ‘어린이 과학체험공간’ 조성",482,482,374,2026-10-06 21:50,목성균 기자,충청일보,,1.34
+396,스포츠월드,지역,https://www.sportsworldi.com/list/1105000000000,non-article,200,utf-8-sig,trafilatura,True,스포츠월드,542,542,542,2000-02-01,,스포츠월드,,1.79
+410,MK스포츠,지역,https://www.mksports.co.kr/news/main/12168653,article,200,utf-8-sig,trafilatura,True,"아시안게임 논란 여파, 53년 된 ‘예술·체육 병역특례’…정치권 내 ‘제도 개편 목소리’ 커져 [MK이슈] - MK스포츠",1996,1996,1996,2026-10-05 21:59,김영훈,MK스포츠,,1.3
+416,SBS연예뉴스,지역,https://ent.sbs.co.kr/news/article.do?article_id=E10010322923,article,200,utf-8-sig,trafilatura:recall:short,True,"[E포토] 김현주, '아름다운 부산의 밤을 함께해요'",169,0,169,2026-10-07 00:33,백승철 기자,SBS연예뉴스,,1.69
+417,동행미디어 시대,경제/IT,https://menu.sidae.com/moneyweek/thumb/2026/10/06/06/2026100614250060917_1.jpg,non-article,200,utf-8/replace,none,False,,0,0,0,,,,non-HTML content,0.13
+421,뉴스1,스포츠/연예,https://www.news1.kr/society/court-prosecution/6312156,article,200,utf-8-sig,trafilatura,True,"조희대 ""위헌"" 6분 작심 발언…국감 복귀해 ""온전 구성 노력""(종합)",756,756,756,2026-10-06 23:58,"이장호 기자, 권진영 기자, 문혜원 기자, 조유리 기자",뉴스1,,1.63
+422,연합뉴스TV,종합/방송/통신,https://www.yonhapnewstv.co.kr/program/view/11034,article,200,utf-8-sig,trafilatura,True,"[연합뉴스TV 스페셜] 443회 : AI패권전쟁, K-반도체의 미래는?",412,0,0,2026-10-04 20:00,연합뉴스TV,연합뉴스TV,,0.99
+440,티브이데일리,지역,https://tvdaily.co.kr/read.php3?aid=17912702371804787008,article,200,cp949,trafilatura,True,"MD 오픈런 행렬부터 대형 옥외 광고까지, 개막 첫날부터 뜨겁게 달아오른 부산 [BIFF 스케치]",1396,1396,0,2026-10-06 16:03,최하나 기자,tvdaily.co.kr,,1.01
+477,스포티비뉴스,지역,https://www.spotvnews.co.kr/news/articleView.html?idxno=1011541,article,200,utf-8-sig,trafilatura,True,"“병역특례, 진작 폐지했어야” 정치권 작심 발언…군면제 외친 축구대표팀 후폭풍, 후배들 미래까지 흔들었다",1583,1583,1583,2026-10-06 10:51,조용운,SPOTV NEWS,,1.24
+529,더게이트,지역,http://www.spochoo.com/news/articleView.html?idxno=130797,article,200,utf-8-sig,trafilatura,True,"KBO리그 역사상 두 명 뿐이던 200안타 타자가 하루에 두 명 나왔다...최원준·레이예스, 나란히 201안타",2123,2123,2123,2026-10-06 23:07,배지헌 기자,더게이트(THE GATE),,0.73
+539,위키트리,경제/IT,https://www.wikitree.co.kr/articles/1164369,article,200,utf-8-sig,trafilatura,True,[속보] 손흥민 A매치 59호골 폭발…차범근 넘어 한국인 최다 신기록,2145,2145,2145,2026-10-06 20:10,방정훈 기자,위키트리,,0.54
+681,이코노타임즈,영자/외국어,https://econotimes.com/OKX-Raises-Fresh-Funding-at-25-Billion-Valuation-1754100,article,200,utf-8-sig,trafilatura,True,OKX Raises Fresh Funding at $25 Billion Valuation - EconoTimes,2345,2345,2345,2026-10-07 01:16,Riza Dagoc,Econotimes,,2.09
+682,여성경제신문,경제/IT,https://www.womaneconomy.co.kr/news/articleView.html?idxno=259385,article,200,utf-8-sig,trafilatura,True,"돌봄로봇 늘리며 ‘다룰 사람’도 키운다···정부, 돌봄기술 전문인력 3000명 양성",2700,2700,2700,2026-10-06 21:24,김정수 기자,여성경제신문,,0.74
+683,MS투데이,경제/IT,https://www.mstoday.co.kr/news/articleView.html?idxno=200075,article,200,utf-8-sig,trafilatura,True,구글도 원전으로 간다…AI 전력전 본격화 - 엠에스투데이,1762,1762,1762,2026-10-06 13:45,신윤경,엠에스투데이,,0.68
+684,TJB,스포츠/연예,https://www.tjb.co.kr/news06/bodo/view/id/104474,article,200,utf-8-sig,readability,True,남극 얼음서 우주 '유령 입자' 잡은 할전…34년 만의 노벨 물리학상 단독 수상,1012,0,1707,2026-10-07 00:20,TJB,TJB 티제이비,,5.31
+685,THE Biz(더비즈),경제/IT,http://www.the-biz.co.kr/news/articleView.html?idxno=728854,article,200,utf-8-sig,readability:short,True,"‘메이드 인 코리아’ 현빈·정우성·우도환, 나란히 걷기만 해도 ‘런웨이’",103,0,0,2026-10-07 00:10,종서현 기자,THE Biz(더비즈),,1.95
+686,주간경향,전문지,https://weekly.khan.co.kr/article/202610060600081,article,200,utf-8-sig,trafilatura,True,"[단독] “대통령, 먼저 뛰어가면 우리는 청소하며 쫓아가”",4549,4549,4549,2026-10-06 06:00,정용인 기자,KyungHyangSinmun,,0.72
+687,뉴스클레임,경제/IT,https://www.newsclaim.co.kr/news/articleView.html?idxno=3077590,article,200,utf-8-sig,trafilatura,True,구재용 서해구청장 취임 100일·분구 100일 기자회견 개최,938,938,938,2026-10-06 20:43,조종현 기자,뉴스클레임,,0.71
+688,경기신문,인터넷,http://www.kgnews.co.kr/news/article.html?no=914240,article,200,utf-8-sig,trafilatura,True,"손흥민 59호 골로 ‘전설’ 차범근 넘었다…한국, 우즈벡 2-0 완파",1193,1193,1193,2026-10-06 22:42,김우혁,kgnews.co.kr,,0.87
+689,인천투데이,인터넷,https://www.incheontoday.com/news/articleView.html?idxno=324553,article,200,utf-8-sig,trafilatura,True,인천대교 남방 어선 화재 진화 완료···인명피해·해양오염 없어 - 인천투데이,595,595,595,2026-10-06 17:40,연우진 기자,인천투데이,,0.74
+690,정책브리핑,경제/IT,https://www.korea.kr/archive/recruitInfoView.do?dataId=396040&pWise=main&pWiseMain=Q1,article,200,utf-8-sig,trafilatura,True,농림축산검역본부 인천공항지역본부 공무직근로자 채용 공고(제2026-17호),682,682,682,2026-10-06,,korea.kr,,1.82
+691,여성동아,전문지,https://woman.donga.com/style/article/all/12/6404917/1,article,200,utf-8-sig,trafilatura,True,올가을 스타일링의 시작은 액세서리부터!,1918,1918,1918,2026-10-06 07:00,오한별 객원기자,여성동아,,0.58
+801,위키리크스한국,경제/IT,http://www.wikileaks-kr.org/news/articleView.html?idxno=192887,article,200,utf-8-sig,trafilatura,True,[WIKI 현장] 데이터센터부터 TV까지 한자리에…KT가 펼쳐놓은 'AX 풀스택',1958,1958,1958,2026-10-06 18:08,김성지 기자,위키리크스한국,,0.73
+802,뉴스Q,지역,https://www.newsq.co.kr/news/articleView.html?idxno=500380,article,200,utf-8-sig,trafilatura,True,"춤추고 웃고 놀란 레드카펫, 김민하가 연 ‘첫걸음’ [제31회 BIFF] - 뉴스Q(뉴스큐)",2724,2724,2724,2026-10-06 22:24,이남경 기자,뉴스Q(뉴스큐),,0.72
+803,인더스트리뉴스,경제/IT,https://www.industrynews.co.kr/news/articleView.html?idxno=87115,article,200,utf-8-sig,trafilatura,True,"‘역사·문화복지·에너지혁신’ 김해시, 도시 체급 ‘벌크업’ - 인더스트리뉴스",1995,1995,1995,2026-10-06 22:39,하용성 기자,인더스트리뉴스,,0.91
+804,데이터뉴스,경제/IT,https://www.datanews.co.kr/news/article.html?no=146805,article,200,utf-8-sig,trafilatura,True,엔씨 ‘아이온2’ 글로벌 출시…동시접속자 40만 돌파,586,586,0,2026-10-06 13:12,강동식 기자,데이터뉴스,,0.81
+805,한경잡앤조이,전문지,https://magazine.hankyung.com/job-joy/tag/20210224174448473,non-article,200,utf-8-sig,trafilatura,True,잡앤조이,13048,13048,13048,2026-10-06,잡앤조이,magazine.hankyung.com,,1.4
+806,한경머니,전문지,"https://magazine.hankyung.com/money/tag/20160812182448963,20210120135336433,20170213142515746",non-article,200,utf-8-sig,trafilatura,True,한경머니,13797,13797,13797,2026-10-06,한경머니,magazine.hankyung.com,,1.88
+807,인사이트코리아,전문지,https://www.insightkorea.co.kr/news/articleView.html?idxno=255955,article,200,utf-8-sig,trafilatura,True,"정용진 신세계그룹 회장, 유통 넘어 글로벌 콘텐츠 사업자 도약 노린다",1458,1458,1458,2026-10-06 18:23,이숙영 기자,인사이트코리아,,0.77
+808,산업일보,전문지,https://kidd.co.kr/news/247636,article,200,utf-8-sig,trafilatura,True,"“전문가 솜씨 그대로 찰칵”… 스튜디오랩, 피지컬·생성형 AI 결합 무인 로봇 촬영 시연",790,790,790,2026-10-06,,산업일보,,2.2
+809,미디어펜,경제/IT,https://www.mediapen.com/news/view/1126998,article,200,utf-8-sig,trafilatura,True,"[글로벌 두뇌전쟁④]현대차, 인도 대학과 R&D…미래 프로젝트 가동",4306,0,0,2026-10-06 10:00,김태균,미디어펜,,0.86
+810,신아일보,경제/IT,https://www.shinailbo.co.kr/news/articleView.html?idxno=5069272,article,200,utf-8-sig,trafilatura,True,"[2026 국감] 조희대 ""대법원 온전한 구성 갖출 수 있도록 노력"" - 신아일보",752,752,752,2026-10-07 00:03,김가애 기자,신아일보,,0.92
+811,센트럴경제,전문지,http://www.newskr.kr/news/articleView.html?idxno=106946,article,200,utf-8-sig,trafilatura,True,인공지능 모델부터 로봇까지...최첨단 AI기술 '총 집합',2051,2051,2051,2026-10-06 23:00,이길주 기자,센트럴경제,,0.93
+812,딜사이트 경제TV,경제/IT,https://news.dealsitetv.com/articles/176693,article,200,utf-8-sig,trafilatura,True,"[IT 투데이] 네이버페이-KB국민은행, 소상공인 상생 업무협약 外 - DealSite경제TV",3908,3908,3908,2026-10-06 17:37,임성윤 기자,DealSite경제TV,,2.64
+813,이코노믹리뷰,전문지,https://www.econovill.com/news/articleView.html?idxno=752168,article,200,utf-8-sig,trafilatura,True,문명은 달라져도 인간은 비슷한 역사를 반복한다 [도서],878,878,823,2026-10-07 00:41,김연제 기자,ER 이코노믹리뷰,,1.16
+814,미주한국일보,경제/IT,http://www.koreatimes.com/article/20261006/1632645,article,200,utf-8-sig,trafilatura,True,한인 정치력·권익 향상 기여…‘검증된 리더십’ - 미주 한국일보,2205,2205,0,2026-10-06,노세희 기자,koreatimes.com,,5.86
+815,법률방송뉴스,전문지,https://www.lawtv.kr/news/articleView.html?idxno=61084,article,200,utf-8-sig,trafilatura,True,"李 이어 김민석도 경고... 檢개혁 강경파 겨냥 ""당이 제어할 때"" - 법률방송뉴스",1328,1328,1328,2026-10-06 16:53,석대성 기자,법률방송뉴스,,1.03
+816,시사오늘,경제/IT,https://www.sisaon.co.kr/news/articleView.html?idxno=204918,article,200,utf-8-sig,trafilatura,True,"김지용 논란, 벌써 시작된 차기 권력투쟁? [한컷오늘+영상] - 시사오늘(시사ON)",1374,1374,1374,2026-10-06 16:44,정진호 기자,시사오늘(시사ON),,1.02
+817,미디어제주,인터넷,https://www.mediajeju.com/news/articleView.html?idxno=366646,article,200,utf-8-sig,trafilatura,True,"[앙코르: 할까 말까2] 3억원대 빛축제, 코인 없으면 구경만 해야 하나 - 미디어제주",6452,6452,6452,2026-10-06 22:19,김은애 기자,미디어제주,,0.88
+818,IT동아,매거진,https://it.donga.com/109651/,article,200,utf-8-sig,trafilatura,True,"[르포] 테니스 치고 순찰도 도는 로봇, 일상 속으로 성큼… ’2026 서울AI로봇쇼’",5406,5406,5406,2026-10-06,김동진 기자,it.donga.com,,1.2
+819,바이라인네트워크,전문지,https://byline.network/wp-json/wp/v2/pages/9004111222523271,non-article,200,utf-8-sig,readability,True,,411,0,0,,,byline.network,,0.09
+821,경남도민일보,인터넷,https://www.idomin.com/news/articleView.html?idxno=2016320,article,200,utf-8-sig,trafilatura,True,10월 7일(음력 8월 27일) 오늘의 운세 - 경남도민일보,1612,1612,1612,2026-10-06 19:50,허태광 부동산·풍수지리 박사,경남도민일보,,1.4
+822,프라임경제,경제/IT,https://www.newsprime.co.kr/news/article.html?no=750012,article,200,utf-8-sig,trafilatura,True,"[2026 국감] 재경부, 레버리지 ETF 손실에 ""송구""…도입 경위 공방",3255,3255,3371,2026-10-06,임채린 기자,프라임경제,,1.9
+823,KPI뉴스,경제/IT,https://www.kpinews.kr/newsView/1065577855174949,article,200,utf-8-sig,trafilatura,True,"제일약품, 글로벌 진출 지원사업 선정…자큐보·신약 확대",825,825,825,2026-10-06 21:56,"배지수, KPI뉴스",KPI뉴스,,1.22
+824,서울파이낸스,경제/IT,https://www.seoulfn.com/news/articleView.html?idxno=639472,article,200,utf-8-sig,trafilatura,True,"웰컴저축은행, 네이버페이와 대안신용평가 대출상품 선보인다 - 서울파이낸스",563,563,563,2026-10-06 17:37,송금종 기자,서울파이낸스,,1.05
+825,이로운넷,경제/IT,https://www.eroun.net/news/articleView.html?idxno=91731,article,200,utf-8-sig,trafilatura,True,"손희권 경북도의원, 영일만대교 대안 노선 논란…투명한 정보 공개 촉구",1078,1078,1078,2026-10-06 18:34,강진구 기자,이로운넷,,0.76
+826,톱데일리,경제/IT,https://www.topdaily.kr/articles/112234,article,200,utf-8-sig,trafilatura,True,고객정보 유출에 5대 은행장 국감 소환 가능성 커져,1284,1284,1284,2026-10-07,김민지 기자,톱데일리,,1.27
+827,베이비뉴스,전문지,https://www.ibabynews.com/news/articleView.html?idxno=155018,article,200,utf-8-sig,trafilatura,True,[부고] 이동기(수원특례시 제2부시장) 씨 장인상,256,256,412,2026-10-06 18:22,소장섭 기자,임신·출산·육아전문언론ㅣ베이비뉴스,,1.58
+828,식품저널 foodnews,전문지,http://www.foodnews.co.kr/news/articleView.html?idxno=120433,article,200,utf-8-sig,trafilatura,True,[국감] 양곡 부정유통 단속 줄었는데 적발은 '최대'…당근마켓서 복지 쌀 불법거래 횡행,1349,1349,1349,2026-10-06 16:04,윤영아 기자,식품저널 foodnews,,1.0
+829,미디어스,전문지,https://www.mediaus.co.kr/news/articleView.html?idxno=318347,article,200,utf-8-sig,trafilatura,True,"KBS구성원 ""국힘, 공영방송 파괴 가담자를 이사 추천""",1728,1728,1728,2026-10-06 20:04,고성욱 기자,미디어스,,0.83
+830,게임동아,지역,https://game.donga.com/124571/,article,200,utf-8-sig,trafilatura,True,"펄어비스 검은사막 모바일, 난치병 환아 지원 기부 이벤트 시작",663,663,663,2026-10-06,,game.donga.com,,1.18
+901,제민일보,인터넷,https://www.jemin.com/news/articleView.html?idxno=843956,article,200,utf-8-sig,trafilatura,True,국회 4·3특별법 상정 '급물살',1308,1308,1308,2026-10-06 19:38,윤승빈 기자,제민일보,,0.79
+902,TV조선,스포츠/연예,https://news.tvchosun.com/site/data/html_dir/2026/10/06/2026100690232.html,article,200,utf-8-sig,trafilatura,True,15기 싣고 첫 '군집위성' 임무…누리호 '우주 수송선' 시험대,862,862,862,2026-10-06 22:23,박상현 기자,news.tvchosun.com,,0.76
+903,채널A,종합/방송/통신,https://ichannela.com/news/detail/000000553845.do,article,200,utf-8-sig,trafilatura,True,[단독]박근령 “암살자들이면 아버지 뜻하는 것 아니냐”,930,930,930,2026-10-06 18:59,남영주,채널A,,1.03
+904,JTBC,종합/방송/통신,https://www.harpersbazaar.co.kr/article/1910991,article,200,utf-8-sig,trafilatura,True,한 번 사두면 평생 입는 ‘하프 집업 니트’ 이렇게 입어요,1914,1914,1914,2026-10-06 20:05,박경미,하퍼스 바자 코리아,,1.76
+905,더스쿠프,전문지,https://www.thescoop.co.kr/news/articleView.html?idxno=311834,article,200,utf-8-sig,trafilatura,True,조기 총선에 기업임대주택 몰수까지…유럽 월세 폭등과 李 정부의 접점,5776,5776,5776,2026-10-06 18:14,한정연 칼럼니스트,더스쿠프,,0.64
+906,KNN,스포츠/연예,https://news.knn.co.kr/news/article/192898,article,200,utf-8-sig,trafilatura,True,31번째 부산국제영화제 '화려한 개막',1104,1104,1211,2026-10-06 20:50,KNN,부산경남대표방송 KNN,,3.0
+907,경북매일신문,인터넷,https://www.kbmaeil.com/null/20261006500675,non-article,404,utf-8-sig,none,False,,,,,,,,HTTP 404,0.03
+909,기호일보,인터넷,https://www.kihoilbo.co.kr/news/articleView.html?idxno=3000015,article,200,utf-8-sig,trafilatura,True,"[카드뉴스] 수능 한 달 앞, 또 폭발물 협박 - 기호일보",550,550,550,2025-10-15 14:19,기호일보,기호일보,,2.02
+910,넥스트데일리,매거진,https://www.nextdaily.co.kr/news/articleView.html?idxno=253618,article,200,utf-8-sig,trafilatura,True,"컬리, 7~9월 포장김치 거래액 35% 증가…소용량 39%↑ 1~2인 가구 호응 - 넥스트데일리",973,973,973,2026-10-06 16:41,이호 기자,넥스트데일리,,0.63
+913,뉴스토마토,경제/IT,https://www.newstomato.com/ReadNews.aspx?no=1315872,article,200,utf-8-sig,trafilatura,True,"윤호중 ""중수청 수사관 개업 제한 필요""…국감 첫날 곳곳서 공방(종합)",2506,0,0,2026-10-06 21:37,윤금주,뉴스토마토,,1.21
+914,뉴스핌,경제/IT,https://www.newspim.com/news/view/20261006001080,article,200,utf-8-sig,trafilatura,True,"[뉴스분석] 李대통령, 범여권 강경파와 '검찰개혁' 정면충돌…갈등·분열 확전 양상",2558,2558,2558,2026-10-06 15:46,박찬제,뉴스핌,,1.13
+915,르몽드 디플로마티크,전문지,https://www.ilemonde.com/news/articleView.html?idxno=30748,article,200,utf-8-sig,trafilatura,True,[비평의 온도] 드라마 '포핸즈' - 복수의 악보에 적힌 것은 균형이었다 - 르몽드디플로마티크(LeMonde Diplomatique),5410,5410,5410,2026-10-06 21:53,박철웅,르몽드디플로마티크(LeMonde Diplomatique),,0.55
+916,머니투데이방송,스포츠/연예,https://news.mtn.co.kr/_next/static/css/5796637433558ea7.css,non-article,200,utf-8-sig,none,False,,0,0,0,,,,non-HTML content,0.04
+917,IT조선,매거진,https://it.chosun.com/news/articleView.html?idxno=2023092171519,article,200,utf-8-sig,trafilatura,True,"메타 ""청소년 인스타 심야 접속 차단, 韓 입법 시 수용할 것"" [국감2026]",714,714,714,2026-10-06 19:55,변인호 기자,IT조선,,0.86
+921,아주경제,경제/IT,https://www.ajunews.com/view/20261007001842183,article,200,utf-8-sig,trafilatura,True,"추미애 지사 ""반도체 산단 물, 양만 줄여선 안 된다""...이번엔 수질 정조준 | 아주경제",1458,1458,1458,2026-10-07 00:50,수원=강대웅,아주경제,,1.31
+922,이투데이,경제/IT,https://www.etoday.co.kr/news/view/2632942?trc=main_newsflash,article,200,utf-8-sig,trafilatura,True,"박스피 갇힌 코스피, 11월 연말 랠리 올까?",1640,1640,1640,2026-10-06 18:00,서청석,ETODAY,,1.02
+923,인민망,경제/IT,http://kr.people.com.cn/img/FOREIGN/2021/04/313138/source/css/flexible.css,non-article,200,utf-8-sig,none,False,,0,1033,1033,,,,non-HTML content,0.22
+924,인벤,전문지,https://www.inven.co.kr/board/diablo4/6025/265403,article,200,utf-8/replace,trafilatura,True,"[이벤트] 지옥의 유산 오픈 기념, 배틀 패스 받아가세요!",1468,1468,1468,2026-09-17,레인둥굴둥굴,inven.co.kr,,5.64
+925,일요신문,경제/IT,https://www.ilyo.co.kr/?ac=article_view&entry_id=513033,article,200,utf-8-sig,trafilatura,True,계열사가 밀어줘도 적자…한화푸드테크·한화로보틱스 ‘밑 빠진 독’ 우려 왜,2433,2433,2433,2026-10-06 17:58,박찬웅 기자,일요신문,,1.79
+926,중부일보,인터넷,https://www.joongboo.com/news/articleView.html?idxno=363738616,article,200,utf-8-sig,trafilatura,True,[최경락 만평] 사법부의 품격? - 중부일보,1175,1175,201,2026-10-06 20:31,"중부일보, 최경락",중부일보 - 경기·인천의 든든한 친구,,2.75
+927,충북일보,인터넷,http://www.inews365.com/news/article.html?no=938354,article,200,utf-8-sig,trafilatura,True,[충북일보] 아침을 여는 詩 - 소나무,618,618,618,2026-10-06 18:26,석미정,충북일보,,3.25
+928,컴퓨터월드,전문지,http://www.comworld.co.kr/news/articleView.html?idxno=52205,article,200,utf-8-sig,trafilatura,True,[커버스토리] 보이스피싱 전쟁…민관 ‘AI 방어선’ 구축,10856,10856,10856,2026-09-30 21:10,성원영 기자,컴퓨터월드,,0.64
+930,뉴스타파,종합/방송/통신,https://newstapa.org/article/XQBOC,article,200,utf-8-sig,trafilatura,True,"'허위 업무추진비' 왜? 조희대 ""못 먹어본 음식 먹고 싶다는 구성원 소망"" 때문",2688,2688,4891,2026-10-06 21:30,"임선응, 김규희",뉴스타파,,1.25
+932,CEO스코어데일리,경제/IT,http://www.ceoscoredaily.com/page/view/2026100615292507431,article,200,utf-8-sig,trafilatura,True,"금융권 뚫은 연쇄해킹 사태… 5대 은행장, 국감장 소환 ‘태풍의 눈’",1978,1978,1978,2026-10-06 17:29,박예슬 기자,CEOSCOREDAILY,,0.9
+935,경상일보,인터넷,https://www.ksilbo.co.kr/news/articleView.html?idxno=1068327,article,200,utf-8-sig,trafilatura,True,"대구웨딩박람회, 스드메 계약 고객 대상 연계 프로그램 운영",1079,1079,1079,2026-09-29 11:00,배정환 기자,경상일보,,1.1
+936,대구일보,인터넷,https://www.idaegu.com/news/articleView.html?idxno=666116,article,200,utf-8-sig,trafilatura:recall,True,"[포토뉴스] 중대범죄수사청(중수청), 본격적인 업무 시작",248,0,134,2026-10-06 18:13,김진홍 기자,대구일보,,1.86
+937,전북도민일보,인터넷,http://www.domin.co.kr/news/articleView.html?idxno=1571097,article,200,utf-8-sig,trafilatura,True,"군산 한 주차장서 차량 화재, 4천만원 상당 피해",345,345,358,2026-10-06 20:09,수습 기자,전북도민일보,,1.61
+938,그린포스트코리아,전문지,https://www.greenpostkorea.co.kr/news/articleView.html?idxno=307609,article,200,utf-8-sig,trafilatura,True,"엔비디아 최고가인데 흔들리는 '삼전닉스’··· ""열쇠는 외국인 수급"" - 그린포스트코리아",3106,3106,3106,2026-10-06 16:44,황혜빈 기자,그린포스트코리아,,0.53
+940,스포츠투데이,지역,https://stoo.com/article.php?aid=109240632719,article,200,cp949,trafilatura,True,"이유진·차경은, 11월 결혼 준비 중 임신 ""새 생명 맞을 준비"" [공식]",532,532,532,2026-10-06,임시령 기자,stoo,,7.8
+941,초이스경제,경제/IT,http://www.choicenews.co.kr/news/articleView.html?idxno=171973,article,200,utf-8-sig,trafilatura,True,코스닥 '급등'...에코프로·주성엔지니어링·HLB·삼천당제약 '껑충',1372,1372,1372,2026-10-06 16:27,이영란 기자,초이스경제,,0.78
+942,비즈니스포스트,경제/IT,https://www.businesspost.co.kr/BP?command=article_view&num=448752,article,200,utf-8-sig,trafilatura,True,[10월7일자] 비즈니스포스트 아침의 주요기사,990,0,2360,2026-10-06 21:01,신재희,비즈니스포스트,,1.0
+943,비즈워치,경제/IT,http://news.bizwatch.co.kr/article/industry/2026/10/06/0051/,article,200,utf-8-sig,trafilatura,True,"""적자 땐 삭감 없더니""…삼전 '반도체 성과급' 합의 국감서 도마",2559,2559,2559,2026-10-06 19:46,강민경 기자,비즈니스워치,,0.46
+947,조이뉴스24,지역,https://www.joynews24.com/list/708100,non-article,200,utf-8-sig,trafilatura,True,조이뉴스24 : jeconomy,2707,2707,2707,2023-04-06,기자,아이뉴스24,,1.15
+948,한겨레21,전문지,https://h21.hani.co.kr/arti/society/society_general/59998.html,article,200,utf-8-sig,trafilatura,True,섬세한 대처 필요한 ‘섭식장애’… 일본은 어떻게 치료하나,3007,3007,3007,2026-10-07,권지담 기자,한겨레21,,1.16
+950,월간중앙,전문지,https://www.m-joongang.com/news/articleView.html?idxno=403142,article,200,utf-8-sig,trafilatura,True,"서울창조경제혁신센터, ‘2026 재도전 성공패키지 투자 밸류업 데모데이’ 성료 - 월간중앙",1171,1171,1171,2026-10-06 16:11,이병준 기자,월간중앙,,0.87
+951,포브스코리아,전문지,https://www.forbeskorea.co.kr/news/articleView.html?idxno=402650,article,200,utf-8-sig,trafilatura,True,"AI 쇼츠 제작 ‘이지컷’, 회원 2만명 돌파…일본 시장 진출 - 포브스코리아(Forbes Korea)",998,998,998,2026-10-02 14:33,이병준 기자,포브스코리아(Forbes Korea),,0.79
+952,보안뉴스,매거진,https://www.boannews.com/news/articleView.html?idxno=146223,article,200,utf-8-sig,trafilatura,True,“대한민국이 공격당하고 있다”... 국정감사 달군 사이버보안 공백 - 보안뉴스,1167,1167,1167,2026-10-06 18:43,조재호 기자,보안뉴스,,1.22
+953,디지털투데이,매거진,https://www.digitaltoday.co.kr/news/articleView.html?idxno=705387,article,200,utf-8-sig,trafilatura,True,AI 에이전트 확산에 CPU 다시 부상…AMD·인텔 반등,1329,1329,1329,2026-10-07 00:15,추현우 기자,디지털투데이 (DigitalToday),,0.85
+954,CNB뉴스,경제/IT,https://www.cnbnews.com/news/articleView.html?idxno=1018114,article,200,utf-8-sig,trafilatura,True,"도성훈 인천광역시교육감, 시민-학생과 주민직선 5기 공약 점검 - CNB뉴스",583,583,583,2026-10-06 22:19,박정길 기자,CNB뉴스,,0.75
+955,독서신문,전문지,https://www.readersnews.com/news/articleView.html?idxno=200727,article,200,utf-8-sig,trafilatura,True,우리말 의미 되새기는 ‘세상을 밝힌 우리의 한글’ - 독서신문,603,603,603,2026-10-06 10:55,최유진 기자,독서신문,,0.77
+956,철강금속신문,전문지,https://www.snmnews.com/news/articleView.html?idxno=575528,article,200,utf-8-sig,trafilatura,True,"[이슈] 현대제철 車강판, 글로벌 완성차 수출 사상 첫 현대차·기아 물량 추월",2305,2305,2305,2026-10-06 11:17,이형원 기자,철강금속신문,,0.81
+957,시사위크,경제/IT,https://www.sisaweek.com/news/articleView.html?idxno=238238,article,200,utf-8-sig,trafilatura,True,"[31st BIFF] 서른 넘어 더 넓은 세계로… 부산국제영화제, 다시 한 걸음",6079,6079,6079,2026-10-06 21:33,이영실 기자,시사위크,,0.47
+958,베리타스알파,전문지,https://www.veritas-a.com/news/articleView.html?idxno=630770,article,200,utf-8-sig,trafilatura,True,"경남대 SW중심대학사업단, AWS 기반 클라우드 실무교육 운영",691,691,691,2026-10-06 17:35,김하연 기자,베리타스알파,,1.62
+959,M이코노미뉴스,경제/IT,https://www.m-economynews.com/news/article.html?no=71400,article,200,utf-8-sig,trafilatura,True,[M이코노미뉴스] 경기 보육계 “추경 보육예산 편성해야”…도청 앞 2천명 집회,1594,1594,1594,2026-10-06 21:39,안자영,m-economynews.com,,1.18
+961,메트로신문,경제/IT,https://www.metroseoul.co.kr/article/20210527500069,article,200,utf-8-sig,trafilatura,True,네이버 뉴스스탠드 구독 설정,311,0,398,2021-05-27,메트로신문,메트로신문,,0.82
+962,스포츠한국,지역,https://sports.hankooki.com/news/articleView.html?idxno=6941293,article,200,utf-8-sig,trafilatura,True,“분위기 무거웠던 것 사실”…‘A매치 최다골’ 손흥민이 밝힌 모레노호[현장 인터뷰],1506,1506,1506,2026-10-06 23:40,이유리 기자,스포츠한국,,0.71
+964,이뉴스투데이,경제/IT,http://www.enewstoday.co.kr/news/articleView.html?idxno=2477550,article,200,utf-8-sig,trafilatura,True,"장애인의료비 미지급금 5년새 2.5 배, 예산현액의 63.5 % 까지 쌓여",1385,1385,1385,2026-10-06 23:54,김은태 기자,이뉴스투데이,,1.21
+965,전기신문,전문지,https://www.electimes.com/news/articleView.html?idxno=373133,article,200,utf-8-sig,trafilatura,True,망 막혀야 전기요금 할인재원 커진다?…지역별 요금의 아이러니,1988,1988,1988,2026-10-06 23:29,정세영 기자,전기신문,,0.74
+966,정신의학신문,전문지,http://www.psychiatricnews.net/news/articleView.html?idxno=33677,article,200,utf-8-sig,trafilatura,True,"[Doctor's Mail] 점점 외톨이가 되어 가는 나, 괜찮은 걸까요?",3673,3673,3673,2026-10-01 08:00,정정엽 정신건강의학과 전문의,정신의학신문,,0.65
+969,매일노동뉴스,경제/IT,https://www.labortoday.co.kr/news/articleView.html?idxno=237083,article,200,utf-8-sig,trafilatura,True,"같은 통합돌봄, 지역 따라 돌봄연계 최대 4배 차이",1107,1107,1107,2026-10-06 06:30,연윤정 기자,매일노동뉴스,,0.67
+970,소비자가만드는신문,경제/IT,http://www.consumernews.co.kr/news/articleView.html?idxno=765370,article,200,utf-8-sig,trafilatura,True,"G마켓, 12일까지 '끝장세일'…디지털·가전 최대 40만 원 할인",748,748,748,2026-10-06 19:12,이예원 기자,소비자가 만드는 신문,,0.7
+971,일요시사,경제/IT,https://www.ilyosisa.co.kr/news/article.html?no=258179,article,200,utf-8-sig,trafilatura,True,[일요시사] 평택 대단지 아파트 ‘임금체불’ 논란,2570,2570,2570,2026-10-06 17:55,김준혁 기자,ilyosisa.co.kr,,0.75
+972,PD저널,경제/IT,https://www.pdjournal.com/news/articleView.html?idxno=90103,article,200,utf-8-sig,trafilatura,True,KBS '추적60분' 등 일곱 편 이달의 PD상 수상 - PD저널,2074,2074,2074,2026-10-01 13:07,박수선 기자,PD저널,,0.68
+973,비즈한국,경제/IT,https://bizhankook.com/articles/sangam-dmc-land-auction-failure.html,article,200,utf-8-sig,trafilatura,True,"[현장] ‘노른자’ 상암 DMC 922억 땅, 또 유찰…왜?",1927,1927,1927,2026-10-06 17:39,정원혁 기자,비즈한국,,0.69
+974,BBS NEWS,경제/IT,https://news.bbsi.co.kr/news/articleView.html?idxno=4110667,article,200,utf-8-sig,trafilatura,True,"조희대 ""대법원 온전한 구성 갖추도록 노력할 것""...추가 질의엔 답변 안해",710,710,710,2026-10-06 23:30,이연서 기자,불교방송,,1.22
+975,시사저널이코노미,경제/IT,https://www.sisajournal-e.com/news/articleView.html?idxno=424150,article,200,utf-8-sig,trafilatura,True,"[AI페스타]① 최기영 앤트로픽 대표 ""AI에이전트에 어떤 권한 줄지 관리하는 게 중요 역할"" - 시사저널e",3217,3217,3217,2026-10-06 17:45,김도영 기자,시사저널e,,0.52
+976,무등일보,인터넷,https://www.mdilbo.com/article/e8U2ub,article,200,utf-8-sig,trafilatura,True,무등일보 : 기획,1048,1048,1048,2026-08-11,이달의 기자,mdilbo.com,,3.49
+977,헬로디디,매거진,http://www.hellodd.com/news/articleView.html?idxno=113411,article,200,utf-8-sig,trafilatura,True,"남극 얼음 2km 지하서 포착한 '우주 비밀'···'중성미자 연구' 美 할젠 교수, 노벨물리학상 단독 수상",2656,2656,2656,2026-10-06 19:52,이유진 기자,헬로디디,,0.86
+978,경북도민일보,인터넷,https://www.hidomin.com/news/articleView.html?idxno=723914,article,200,utf-8-sig,trafilatura,True,“먼저 해칠까 봐” 요양병원서 동료 환자 소화기로 살해한 70대 ‘징역 15년’ - 경북도민일보,833,833,833,2026-10-06 20:02,김국진 기자,경북도민일보,,0.82
+979,약사공론,전문지,https://www.kpanews.co.kr/news/articleView.html?idxno=545671,article,200,utf-8-sig,trafilatura,True,안전상비약 위반 6.7%가 '묶음판매'…최근 2년 집중 - 약사공론,1012,1012,1012,2026-10-06 18:06,김정주 기자,약사공론,,1.25
+980,KBC광주방송,스포츠/연예,https://news.ikbc.co.kr/article/list/kbc001000000,non-article,200,utf-8-sig,trafilatura,True,KBC광주방송,4540,4540,4540,2026-10-06,KBC광주방송,KBC광주방송,,2.72
+982,이코노미조선,전문지,https://economychosun.com/site/data/html_dir/2026/10/03/2026100300041.html,article,200,utf-8-sig,trafilatura,True,‘더 오래 보게 하라’의 끝… 청소년 SNS 가드레일 러시,683,369,369,2026-10-05 11:00,에디터 오광진,economychosun.com,,0.56
+983,중부매일,인터넷,https://www.jbnews.com/news/articleView.html?idxno=1512937,article,200,utf-8-sig,trafilatura,True,윤희근 전 경찰청장 국민의힘 청주 서원구 조직위원장 경선 승리,320,320,570,2026-10-06 19:39,신동빈 기자,중부매일 - 충청권 대표 뉴스 플랫폼,,1.49
+984,낚시춘추,전문지,https://fishingseasons.co.kr/fishplace/fishplace_view.asp?b_no=90807,article,200,cp949,trafilatura,True,낚시춘추,279,279,279,2024-04-26,,낚시춘추,,1.99
+986,투데이신문,전문지,https://www.ntoday.co.kr/news/articleView.html?idxno=129866,article,200,utf-8-sig,trafilatura,True,연체액은 줄었는데 질은 악화…보험사 주담대 ‘장기연체’ 56%,1206,1206,1206,2026-10-06 22:34,김효인 기자,투데이신문,,0.95
+988,이코노미사이언스,전문지,https://www.e-science.co.kr/news/articleView.html?idxno=136804,article,200,utf-8-sig,trafilatura,True,"CJ ONE, 이마트24까지 넓힌 ‘생활 멤버십’…두 달 새 신규회원 12만4000명 - 이코노미사이언스",865,865,865,2026-10-06 22:05,김연옥 기자,이코노미사이언스,,0.75
+990,주간조선,전문지,http://weekly.chosun.com/news/articleView.html?idxno=55923,article,200,utf-8-sig,trafilatura,True,北 “DMZ 지뢰 사고는 한국 자작극…1㎜라도 침범하면 강력 대응”,1769,1769,1769,2026-10-07 00:25,백지나 기자,주간조선,,0.71
+991,데일리NK,전문지,https://www.dailynk.com/20261006-5/,article,200,utf-8-sig,trafilatura,True,가을걷이철 ‘이삭줍기 전쟁’…농장서 이삭꾼 접근 차단하기도 - DailyNK,1444,1444,1444,2026-10-06 17:06,선화 기자,DailyNK,,0.81
+993,허프포스트코리아,경제/IT,https://www.huffingtonpost.kr/article/261014,article,200,utf-8-sig,trafilatura,True,'기업금융 전문가' 정진완 우리은행장 첫 연임은 법인 영업 성과가 가른다 : 수익 악화 반등의 열쇠는 '기업',4057,4057,4057,2026-10-06 15:58,윤휘종 기자,허프포스트코리아,,1.14
+994,AI타임스,매거진,https://www.aitimes.com/news/articleView.html?idxno=215987,article,200,utf-8-sig,trafilatura,True,"'미국 오픈소스 대표' 리플렉션 AI, 첫 모델 공개…반응은 엇갈려 - AI타임스",1769,1769,1769,2026-10-06 18:19,박찬 기자,AI타임스,,0.99
+995,뉴스포스트,전문지,https://www.newspost.kr/news/articleView.html?idxno=226148,article,200,utf-8-sig,trafilatura,True,"[2026 국감] ""DX 버리는 게 초기업인가""…여야, 삼성 초기업노조 위원장 비난",769,769,769,2026-10-06 17:32,김윤진 기자,뉴스포스트,,0.96
+996,매경헬스,전문지,http://www.mkhealth.co.kr/news/articleView.html?idxno=80321,article,200,utf-8-sig,trafilatura,True,"""AI가 영원히 닿지 못할 영역, 감정이죠""…외로운 현대인 품는 지역사회 온기",2762,2762,2762,2026-10-06 20:13,신연경 기자,매경헬스,,0.83
+997,뉴스펭귄,전문지,https://www.newspenguin.com/news/articleView.html?idxno=22262,article,200,utf-8-sig,trafilatura,True,가뭄에 땅 마르자 어린 딸 시집보냈다 - 뉴스펭귄,4347,4347,4347,2026-10-06 17:43,정도영 기자,뉴스펭귄,,0.49
+998,뉴스앤조이,전문지,https://www.newsnjoy.or.kr/news/articleView.html?idxno=400795,article,200,utf-8-sig,trafilatura,True,"여성 안수 반대하는 '빛나는 전통', 언제까지 우길 수 있을까",2614,2614,2614,2026-10-06 19:03,구교형,뉴스앤조이,,0.39

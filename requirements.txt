@@ -1,0 +1,12 @@
+trafilatura>=2.3.0
+readability-lxml>=0.8.1
+newspaper4k>=0.9.6
+feedparser>=6.0.11
+httpx>=0.28.1
+lxml>=5.3.0
+PyYAML>=6.0.2
+anthropic>=1.12.1   # 7단계 LLM 보조 설정 (선택)
+playwright>=1.50    # JS 렌더링 사이트용 (선택, pip install playwright && playwright install chromium)
+
+# 개발용
+pytest>=8.0

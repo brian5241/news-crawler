@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; font-family: system-ui, sans-serif; font-size: 14px; background: #f4f6f3; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<!-- 폴더에서 바로 열어도 그림(mermaid)이 그려지도록 스크립트를 불러온다. 인터넷 연결이 필요하다. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+</head>
+<body>
+<title>뉴스 크롤러 구조 가이드</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* 레이아웃: 한 칸짜리 학습 노트. 왼쪽 여백에 장 번호, 본문은 65자 폭, 그림은 종이 카드 위에. */
+:root {
+  --bg: #f4f6f3;          /* 신문지 느낌의 차가운 회백색 */
+  --paper: #ffffff;
+  --fg: #1d2630;
+  --muted: #5b6672;
+  --line: #d6dcd8;
+  --ink: #163d6b;         /* 인쇄 잉크 남색: 제목·강조 */
+  --ink-soft: #e4ecf6;
+  --mark: #ffe58a;        /* 형광펜: 외워야 할 문장 */
+  --ok: #2b7a4b;
+  --warn: #b9541c;
+  --code-bg: #eef1ee;
+  --font-body: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "D2Coding", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141a20; --paper: #1d252e; --fg: #e8edf1; --muted: #a2adb8; --line: #334049;
+    --ink: #8fb6e8; --ink-soft: #22354a; --mark: #6b5a12; --ok: #6fc48f; --warn: #e3905e; --code-bg: #0f1419;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141a20; --paper: #1d252e; --fg: #e8edf1; --muted: #a2adb8; --line: #334049;
+  --ink: #8fb6e8; --ink-soft: #22354a; --mark: #6b5a12; --ok: #6fc48f; --warn: #e3905e; --code-bg: #0f1419;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.7;
+       margin: 0; padding-block: 28px 80px; padding-inline: 20px; }
+.wrap { max-width: 880px; margin: 0 auto; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.3; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 900; color: var(--ink); letter-spacing: -0.01em; }
+h2 { font-size: clamp(21px, 3.4vw, 26px); font-weight: 700; margin-top: 56px; padding-top: 18px; border-top: 2px solid var(--line);
+     display: flex; gap: 12px; align-items: baseline; }
+h2 .no { font-family: var(--font-mono); font-size: 14px; color: var(--muted); font-weight: 600; letter-spacing: 0.08em; }
+h3 { font-size: 18px; font-weight: 700; margin-top: 28px; }
+p { margin: 12px 0; max-width: 68ch; }
+.lead { font-size: 18px; color: var(--muted); max-width: 60ch; }
+mark { background: var(--mark); color: inherit; padding: 0 3px; border-radius: 2px; }
+code, kbd { font-family: var(--font-mono); font-size: 0.92em; background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+pre.cmd { font-family: var(--font-mono); font-size: 14px; background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px;
+          padding: 12px 14px; overflow-x: auto; margin: 10px 0; }
+.eyebrow { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 24px 0 8px; }
+.stat { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.stat b { display: block; font-size: 28px; font-weight: 900; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.stat span { color: var(--muted); font-size: 13px; }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 6px; }
+nav.toc a { font-size: 13px; color: var(--ink); background: var(--ink-soft); padding: 6px 10px; border-radius: 999px; text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+.figure { background: #ffffff; color: #1d2630; border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin: 18px 0; overflow-x: auto; }
+.figure .cap { font-size: 13px; color: #5b6672; margin: 8px 4px 0; }
+pre.mermaid { margin: 0; background: transparent; min-width: 560px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; margin: 18px 0; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; min-width: 0; }
+.card .file { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink); font-weight: 600; }
+.card h4 { margin: 4px 0 6px; font-size: 16px; }
+.card p { margin: 0; font-size: 14.5px; color: var(--muted); }
+.analogy { border-left: 4px solid var(--ink); background: var(--ink-soft); padding: 12px 16px; border-radius: 0 10px 10px 0; margin: 18px 0; }
+.analogy p { margin: 4px 0; }
+.steps { counter-reset: s; display: grid; gap: 10px; margin: 18px 0; padding: 0; list-style: none; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start;
+            background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.steps li::before { content: counter(s); font-family: var(--font-mono); font-weight: 600; color: var(--ink);
+                    background: var(--ink-soft); border-radius: 8px; width: 36px; height: 36px; display: grid; place-items: center; }
+.steps b { display: block; }
+.steps small { color: var(--muted); display: block; margin-top: 2px; }
+.journey { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin: 18px 0; }
+.stage { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px; min-width: 0; }
+.stage .eyebrow { margin-bottom: 4px; }
+.stage .val { font-family: var(--font-mono); font-size: 12.5px; background: var(--code-bg); border-radius: 6px; padding: 8px; margin-top: 8px;
+              white-space: pre-wrap; word-break: break-all; line-height: 1.5; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; margin: 14px 0; font-variant-numeric: tabular-nums; }
+.tbl { overflow-x: auto; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12.5px; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; }
+td.num { text-align: right; white-space: nowrap; }
+.ok { color: var(--ok); font-weight: 700; } .warn { color: var(--warn); font-weight: 700; }
+.qa { display: grid; gap: 10px; margin: 18px 0; }
+.qa details { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.qa summary { cursor: pointer; font-weight: 700; }
+.qa summary:focus-visible { outline: 2px solid var(--ink); border-radius: 6px; }
+.qa p { margin: 8px 0 2px; font-size: 15px; }
+dl.gloss { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 14px 0; }
+dl.gloss dt { font-weight: 700; color: var(--ink); }
+dl.gloss dd { margin: 0; color: var(--fg); }
+.pill { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--ink-soft); color: var(--ink); font-weight: 600; margin-right: 6px; }
+.foot { color: var(--muted); font-size: 13px; margin-top: 40px; border-top: 1px solid var(--line); padding-top: 12px; }
+@media (max-width: 520px) {
+  dl.gloss { grid-template-columns: 1fr; gap: 2px; } dl.gloss dd { margin-bottom: 8px; }
+  .steps li { grid-template-columns: 36px 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) { nav.toc a { transition: transform .15s; } nav.toc a:hover { transform: translateY(-1px); } }
+
+/* 그림: 본문 안에서는 카드 폭을 꽉 채우고, 클릭하면 크게 보기 */
+.figure { position: relative; cursor: zoom-in; }
+.figure .zoom-btn { position: absolute; top: 10px; right: 10px; font: 600 12px var(--font-body); color: #163d6b; background: #e4ecf6;
+                    border: 1px solid rgba(22,61,107,.25); border-radius: 999px; padding: 5px 10px; cursor: pointer; }
+.figure .zoom-btn:focus-visible { outline: 2px solid #163d6b; outline-offset: 2px; }
+pre.mermaid svg { max-width: none !important; width: 100%; height: auto; }
+.lightbox { position: fixed; inset: 0; background: rgba(10,14,18,.97); display: none; flex-direction: column; z-index: 1000; }
+.lightbox.open { display: flex; }
+.lb-bar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; padding: 10px 14px; padding-top: calc(10px + env(safe-area-inset-top, 0px)); color: #fff; }
+.lb-bar button { font: 600 14px var(--font-body); color: #1d2630; background: #fff; border: 0; border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.lb-bar button:focus-visible { outline: 2px solid #ffe58a; outline-offset: 2px; }
+.lb-bar .lb-title { flex: 1 1 200px; font-size: 14px; color: #cfd8e3; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lb-bar .lb-zoom { font-family: var(--font-mono); font-size: 13px; color: #cfd8e3; min-width: 48px; text-align: center; }
+.lb-view { flex: 1; overflow: hidden; position: relative; cursor: grab; touch-action: none; }
+.lb-view.dragging { cursor: grabbing; }
+.lb-stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.lb-stage svg { display: block; background: #fff; border-radius: 8px; }
+.lb-hint { color: #9fb0c3; font-size: 12px; padding: 6px 14px calc(8px + env(safe-area-inset-bottom, 0px)); }
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">SeSAC 과제 · news-crawler · 발표 준비용 학습 노트</div>
+  <h1>뉴스 사이트 244곳을 코드 수정 없이 긁는 크롤러, 어떻게 돌아가나</h1>
+  <p class="lead">신문사 주소 한 줄만 적어 주면, 프로그램이 그 신문사를 스스로 조사해서 기사를 모아 오는 시스템입니다. 이 페이지는 발표 때 말할 내용을 그림과 비유로 정리한 공부 자료입니다.</p>
+
+  <div class="stats">
+    <div class="stat"><b>244</b><span>등록된 언론사 (설정 파일 한 개)</span></div>
+    <div class="stat"><b>0줄</b><span>새 사이트 추가할 때 고친 코드</span></div>
+    <div class="stat"><b>2,100+</b><span>저장된 기사 (SQLite)</span></div>
+    <div class="stat"><b>98%</b><span>기사 본문 추출 성공률 (196곳 평가)</span></div>
+    <div class="stat"><b>39</b><span>자동 테스트, 인터넷 없이 통과</span></div>
+  </div>
+
+  <nav class="toc" aria-label="목차">
+    <a href="#what">1 무엇을 하는 프로그램인가</a><a href="#map">2 전체 지도</a><a href="#register">3 사이트 등록 흐름</a>
+    <a href="#crawl">4 수집 흐름</a><a href="#journey">5 기사 한 장의 여행</a><a href="#manners">6 예의와 안전장치</a>
+    <a href="#numbers">7 숫자로 보는 결과</a><a href="#limits">8 한계와 실패</a><a href="#talk">9 발표 포인트와 예상 질문</a><a href="#gloss">10 용어 사전</a>
+  </nav>
+
+  <h2 id="what"><span class="no">01</span>무엇을 하는 프로그램인가</h2>
+  <div class="analogy">
+    <p><b>비유.</b> 전국 신문사 244곳에 매일 들러서 새 기사를 받아 오는 배달 로봇입니다. 보통 로봇은 신문사마다 "이 집은 문이 어디, 우편함이 어디"를 사람이 일일이 가르쳐야 합니다. 우리 로봇은 <mark>신문사 주소만 주면 처음 가서 스스로 집 구조를 파악하고 메모해 둡니다.</mark> 다음부터는 그 메모만 보고 다닙니다.</p>
+  </div>
+  <p>과제의 핵심 요구는 하나였습니다. <b>"새 사이트를 등록할 때 코드를 고치지 않아도 바로 작동할 것."</b> 보통 크롤러는 사이트마다 전용 코드를 짭니다. 우리는 반대로, 사이트를 <em>관찰</em>해서 설정 파일(<code>sites.yaml</code>)을 자동으로 쓰는 쪽을 택했습니다.</p>
+  <p>그래서 사용자가 치는 명령은 두 가지뿐입니다.</p>
+<pre class="cmd">python main.py add-site hani.co.kr      # 신문사 등록: 조사해서 설정 파일에 적는다
+python main.py crawl                    # 등록된 모든 신문사에서 새 기사를 받아 저장한다</pre>
+
+  <h2 id="map"><span class="no">02</span>전체 지도</h2>
+  <p>위쪽 줄이 "등록", 아래쪽 줄이 "수집"입니다. 두 줄은 설정 파일 하나로 이어집니다.</p>
+  <div class="figure">
+<pre class="mermaid">
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e4ecf6','primaryTextColor':'#1d2630','primaryBorderColor':'#163d6b','lineColor':'#5b6672','fontFamily':'Noto Sans KR, sans-serif','fontSize':'14px'}}}%%
+flowchart LR
+  A["사용자<br/>add-site 도메인"] --> D["discover.py<br/>사이트 자동 조사"]
+  D -->|"아무것도 못 찾으면 --llm"| L["llm_assist.py<br/>Claude에 물어 보고 검증"]
+  D --> Y[("sites.yaml<br/>사이트당 블록 하나")]
+  L --> Y
+  Y --> C["사용자<br/>crawl"]
+  C --> S["sources.py<br/>기사 주소 모으기"]
+  S --> P["pipeline.py<br/>새 주소만, robots 확인"]
+  P --> F["fetch.py<br/>받기 (예의·차단 감지)"]
+  F --> E["extract.py<br/>본문·제목·날짜·기자"]
+  E --> DB[("storage.py<br/>SQLite")]
+  DB --> X["export csv/jsonl<br/>stats"]
+</pre>
+    <div class="cap">그림 1. 전체 구조. 네모는 코드 부품, 원통은 파일(데이터)입니다.</div>
+  </div>
+
+  <h3>부품 열 개를 한 줄씩</h3>
+  <div class="cards">
+    <div class="card"><div class="file">crawler/fetch.py</div><h4>받아 오는 손</h4><p>웹 페이지를 받아 옵니다. 브라우저처럼 보이는 머리말을 붙이고, 실패하면 잠깐 쉬고 다시 하며, 한글이 깨지지 않게 글자 표(인코딩)를 알아맞힙니다. 차단 페이지도 여기서 알아봅니다.</p></div>
+    <div class="card"><div class="file">crawler/extract.py</div><h4>읽는 눈</h4><p>받아 온 페이지에서 제목·본문·날짜·기자·언론사를 뽑습니다. 추출기 여섯 개를 차례로 시도해 가장 좋은 결과를 씁니다. 날짜 표기 통일, 기자 이름 정리도 합니다.</p></div>
+    <div class="card"><div class="file">crawler/discover.py</div><h4>집 구조 파악하는 코</h4><p>새 사이트에 처음 가서 안내문(robots.txt), 새 기사 목록표(RSS), 전체 목록(사이트맵), 기사 주소 규칙을 찾아내고 실제 기사 하나로 검증합니다.</p></div>
+    <div class="card"><div class="file">crawler/config.py · sites.yaml</div><h4>메모장</h4><p>사이트마다 찾아낸 정보를 한 블록씩 적어 둡니다. 사람이 손으로 쓰는 게 아니라 프로그램이 씁니다. 사이트의 이름표는 홈 주소의 호스트입니다.</p></div>
+    <div class="card"><div class="file">crawler/sources.py</div><h4>기사 주소 모으기</h4><p>메모를 보고 RSS → 뉴스 사이트맵 → 목록 페이지 순서로 기사 주소를 모읍니다. 앞 방법이 통하면 뒤 방법은 안 씁니다.</p></div>
+    <div class="card"><div class="file">crawler/pipeline.py</div><h4>배달 계획</h4><p>이미 받은 주소는 빼고, robots.txt가 금지한 주소는 건너뛰고, 사이트마다 간격을 지키며 받아서 저장까지 이어 줍니다. 사이트끼리는 동시에, 한 사이트 안에서는 차례로.</p></div>
+    <div class="card"><div class="file">crawler/storage.py</div><h4>창고</h4><p>SQLite 데이터베이스입니다. 같은 주소나 같은 본문은 두 번 넣지 않고, 실패 이유·실행 기록·차단 쿨다운도 함께 적습니다. CSV와 JSONL로 꺼낼 수 있습니다.</p></div>
+    <div class="card"><div class="file">crawler/embedded.py</div><h4>숨은 본문 찾기</h4><p>자바스크립트로 화면을 그리는 사이트 중 상당수는 본문을 HTML 안 JSON에 숨겨 둡니다. 브라우저 없이 그 JSON만 읽습니다. 조선일보가 이걸로 살아났습니다.</p></div>
+    <div class="card"><div class="file">crawler/llm_assist.py</div><h4>막혔을 때 묻는 조언자</h4><p>자동 조사가 아무것도 못 찾으면 페이지의 증거(링크 목록 등)만 Claude에 보여 주고 기사 주소 규칙을 제안받습니다. 제안은 실제 링크와 기사 추출로 검증한 뒤에만 채택합니다.</p></div>
+    <div class="card"><div class="file">main.py</div><h4>조종판</h4><p>명령어 모음입니다. add-site, discover, list-sites, crawl, export, stats, unblock, extract.</p></div>
+  </div>
+
+  <h2 id="register"><span class="no">03</span>사이트 등록 흐름: 처음 가는 집 파악하기</h2>
+  <div class="analogy"><p><b>비유.</b> 처음 가는 도서관에서 책 찾는 순서와 같습니다. 안내문을 읽고, 신간 목록표를 찾고, 전체 장서 목록을 찾고, 책 번호 규칙을 알아낸 뒤, 그 규칙으로 책 한 권을 실제로 꺼내 봅니다.</p></div>
+  <ol class="steps">
+    <li><div><b>robots.txt 읽기</b><small>"지도는 여기 있어요", "천천히 와 주세요(Crawl-delay)" 같은 사이트의 안내문. 금지한 길은 끝까지 안 들어갑니다.</small></div></li>
+    <li><div><b>RSS 찾기</b><small>새 기사 목록표. 페이지 안의 링크, 한국 신문사들이 자주 쓰는 주소 14가지, RSS 안내 페이지까지 뒤지고, 찾은 건 실제로 열어 기사 목록이 들어 있는지 확인합니다.</small></div></li>
+    <li><div><b>사이트맵 찾기</b><small>기사 전체 목록. robots에 적힌 것과 흔한 주소 8가지를 시험하고, 뉴스 전용 사이트맵은 따로 표시합니다.</small></div></li>
+    <li><div><b>기사 주소 규칙 만들기</b><small>기사 주소 수십 개를 모아 공통 꼴을 뽑습니다. 숫자 ID 자리는 "숫자 아무거나(\d+)", 분야 이름 자리는 "글자 아무거나([^/]+)"로 바꿉니다. 예: 한겨레는 <code>arti/분야/세부/숫자.html</code>.</small></div></li>
+    <li><div><b>규칙 검증</b><small>그 규칙에 맞는 기사 하나를 실제로 받아서 긴 문단과 날짜가 나오는지 봅니다. 목록 페이지가 기사로 둔갑하는 걸 막는 장치입니다. 통과한 것만 설정 파일에 적습니다.</small></div></li>
+  </ol>
+  <div class="figure">
+<pre class="mermaid">
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e4ecf6','primaryTextColor':'#1d2630','primaryBorderColor':'#163d6b','lineColor':'#5b6672','fontFamily':'Noto Sans KR, sans-serif','fontSize':'14px'}}}%%
+flowchart TD
+  H["홈페이지 받기"] --> R["robots.txt"]
+  R --> F["RSS 후보 → 실제로 열어 검증"]
+  F --> M["사이트맵 후보 → 검증"]
+  M --> U["기사 주소 모으기<br/>RSS 항목 → 뉴스 사이트맵 → 홈 링크"]
+  U --> T["주소를 템플릿으로 일반화<br/>숫자→\d+, 분야→[^/]+"]
+  T --> V{"샘플 기사 1건<br/>진짜 기사인가?"}
+  V -->|예| Y[("sites.yaml에 기록")]
+  V -->|아니오| N["미검증 표시만 남김"]
+</pre>
+    <div class="cap">그림 2. add-site 한 번에 일어나는 일. 사이트당 요청 20~30회, 약 5~10초.</div>
+  </div>
+  <p>설정 파일에 남는 블록은 이런 모양입니다. 사람이 읽을 수 있고, 필요하면 손으로 고칠 수도 있지만, 246곳 전부 프로그램이 썼습니다.</p>
+<pre class="cmd">- name: 한겨레
+  domain: hani.co.kr
+  home: https://www.hani.co.kr/
+  rss: [https://www.hani.co.kr/rss]
+  news_sitemaps: [https://www.hani.co.kr/sitemap/latest-articles]
+  article_patterns: ['^https?://(?:www\.)?hani\.co\.kr/arti/[^/]+/[^/]+/\d+\.html(?:[?#&].*)?$']
+  list_pages: [https://www.hani.co.kr/arti/opinion, ...]</pre>
+
+  <h2 id="crawl"><span class="no">04</span>수집 흐름: 메모 보고 배달하기</h2>
+  <div class="figure">
+<pre class="mermaid">
+%%{init: {'theme':'base','themeVariables':{'primaryColor':'#e4ecf6','primaryTextColor':'#1d2630','primaryBorderColor':'#163d6b','lineColor':'#5b6672','fontFamily':'Noto Sans KR, sans-serif','fontSize':'14px'}}}%%
+flowchart LR
+  S["sites.yaml<br/>사이트 블록"] --> C["기사 주소 모으기<br/>RSS → 뉴스 사이트맵 → 목록 페이지"]
+  C --> K{"이미 받은 주소?"}
+  K -->|예| SKIP1["건너뜀"]
+  K -->|아니오| RB{"robots.txt 허용?"}
+  RB -->|아니오| SKIP2["건너뛰고 셈"]
+  RB -->|예| G["받기<br/>간격 1초 이상"]
+  G --> B{"차단 응답?<br/>403·429·봇 검사"}
+  B -->|예| CD["즉시 중단<br/>24시간 쿨다운 기록"]
+  B -->|아니오| E["추출<br/>6단 폴백"]
+  E --> D{"같은 사이트에<br/>같은 본문?"}
+  D -->|예| DUP["중복으로 셈"]
+  D -->|아니오| DB[("저장")]
+</pre>
+    <div class="cap">그림 3. crawl 이 기사 주소 하나마다 거치는 판단. 사이트끼리는 동시에, 한 사이트 안에서는 순서대로.</div>
+  </div>
+  <p><mark>재실행하면 새 기사만 받습니다.</mark> 이미 저장한 주소, 본문이 같아 중복으로 판정한 주소, 추출에 실패한 주소(3일 동안)는 기억해 두고 다시 받지 않습니다. 그래서 30분마다 돌려도 사이트에 가는 요청은 "새로 생긴 기사" 수만큼만 늘어납니다.</p>
+
+  <h2 id="journey"><span class="no">05</span>기사 한 장의 여행 (실제 예)</h2>
+  <p>한겨레 기사 한 건이 시스템을 지나가면서 어떤 데이터로 바뀌는지입니다. 발표 때 이 흐름을 따라 말하면 전체가 한 번에 설명됩니다.</p>
+  <div class="journey">
+    <div class="stage"><div class="eyebrow">1 주소 수집</div>RSS 항목에서 주소를 얻음<div class="val">https://www.hani.co.kr/arti/economy/it/1281224.html
+출처: rss</div></div>
+    <div class="stage"><div class="eyebrow">2 받기</div>HTTP 200, 199KB, 인코딩 utf-8<div class="val">status 200
+encoding utf-8-sig
+elapsed 0.2s</div></div>
+    <div class="stage"><div class="eyebrow">3 추출</div>trafilatura 1단계에서 성공<div class="val">title 배경훈, 아모데이 'AI 위험' 경고에 "이율배반적…"
+date 2026-10-06 23:32
+author 강재구
+text 1,652자</div></div>
+    <div class="stage"><div class="eyebrow">4 정리</div>저작권 문구·기자 이메일 제거, 날짜를 KST 표준꼴로<div class="val">"2026-10-06T23:32:00+09:00"
+→ "2026-10-06 23:32"</div></div>
+    <div class="stage"><div class="eyebrow">5 저장</div>SQLite articles 표에 1행, 본문 해시로 중복 검사<div class="val">site_domain hani.co.kr
+text_hash 5a1c…
+source rss</div></div>
+    <div class="stage"><div class="eyebrow">6 내보내기</div>CSV 한 줄 또는 JSONL 한 줄<div class="val">python main.py export --site hani.co.kr</div></div>
+  </div>
+
+  <h3>추출기가 여섯 개인 이유</h3>
+  <p>사이트마다 HTML 생김새가 달라서 한 가지 방법으로는 다 못 읽습니다. 앞 방법이 본문 200자를 못 채우면 다음 방법을 시도하고, 전부 짧으면 가장 긴 결과를 씁니다. 순서는 trafilatura(정밀) → JSON-LD → HTML 속 JSON(embedded) → trafilatura(재현율) → readability → newspaper4k입니다. 196곳 평가에서 189곳은 첫 단계에서 끝났고, 나머지가 뒤 단계로 살았습니다.</p>
+
+  <h2 id="manners"><span class="no">06</span>예의와 안전장치: 길에서 지켜야 할 규칙</h2>
+  <div class="analogy"><p><b>왜 중요한가.</b> 크롤러가 예의 없이 두드리면 사이트가 문을 닫습니다. 실제로 하루에 전체 조사를 세 번 반복했다가 같은 호스팅을 쓰는 20곳이 하루 반 동안 우리를 막았습니다. 그 뒤로 규칙을 코드에 박았습니다.</p></div>
+  <div class="tbl"><table>
+    <tr><th>규칙</th><th>구현</th><th>비유</th></tr>
+    <tr><td>robots.txt 준수</td><td>금지 경로는 건너뛰고 셈. Crawl-delay가 있으면 그만큼 기다림</td><td>"출입금지" 표지판 지키기</td></tr>
+    <tr><td>요청 간격</td><td>같은 사이트 안에서 1초 이상, 자동 조사도 0.4초 이상</td><td>문을 연달아 두드리지 않기</td></tr>
+    <tr><td>차단 감지</td><td>403·429·봇 검사 페이지(Datadome, Cloudflare 등)를 응답에서 알아봄. 429는 재시도 안 함</td><td>"지금은 안 돼요" 소리 듣기</td></tr>
+    <tr><td>즉시 중단 + 쿨다운</td><td>차단이 보이면 그 사이트에 바로 멈추고 DB에 24시간 쿨다운을 적어 다음 실행에서도 건너뜀</td><td>혼났으면 하루 쉬기</td></tr>
+    <tr><td>죽은 사이트 포기</td><td>연결 오류 2회 연속이면 그 사이트는 이번엔 포기</td><td>안 열리는 문 계속 밀지 않기</td></tr>
+    <tr><td>상한선</td><td>요청 하나 45초·5MB, 사이트 하나 240초, 한 번 실행에 사이트당 새 기사 30건(조정 가능)</td><td>한 집에서 너무 오래 머물지 않기</td></tr>
+  </table></div>
+  <p>단순 403은 특정 주소만 막힌 걸 수도 있어서 연속 2회(자동 조사는 3회)일 때만 차단으로 봅니다. 한국경제 프리미엄 기사 하나 때문에 사이트 전체를 막지 않기 위해서입니다.</p>
+
+  <h2 id="numbers"><span class="no">07</span>숫자로 보는 결과</h2>
+  <p>전부 실제 실행에서 나온 수치이고, 각 수치의 원본 표는 저장소의 <code>docs/</code> 폴더에 있습니다.</p>
+  <div class="tbl"><table>
+    <tr><th>무엇을 평가했나</th><th>대상</th><th>결과</th><th>문서</th></tr>
+    <tr><td>기사 본문 추출</td><td>기사 URL을 확보한 196곳, 1건씩</td><td class="ok">193곳 성공 (98%) · 제목·날짜 100% · 기자 96%</td><td>extract_quality.md</td></tr>
+    <tr><td>사이트 자동 조사</td><td>네이버 뉴스스탠드 246곳, 주소만 입력</td><td class="ok">234곳(95%)이 수집 경로 확보 · RSS 166 · 뉴스 사이트맵 178 · 기사 규칙 232</td><td>discovery_results.md</td></tr>
+    <tr><td>수집 시연</td><td>223곳, 사이트당 새 기사 10건</td><td class="ok">9분, 주소 5,220개 → 저장 2,027건 · 중복 28 · 실패 32 · robots로 건너뜀 90</td><td>crawl_report.md</td></tr>
+    <tr><td>"코드 수정 없이 추가" 시험</td><td>차단으로 보류했던 20곳</td><td class="ok">20/20 추가 성공, 기사 3건 수집 20/20</td><td>holdout_test.md</td></tr>
+    <tr><td>유료·로그인 벽</td><td>222곳, 기사 8건 같은 세션 + 첫 기사 재확인</td><td>계량 페이월 0곳 · 부분 잠금 2곳(식품저널, 시사IN) · 판정 불가 4곳</td><td>paywall_check.md</td></tr>
+    <tr><td>뉴욕타임스</td><td>요청 3회만</td><td class="warn">기사 1건부터 403 + Datadome 봇 검사 → 대상에서 제외</td><td>nyt_check.md</td></tr>
+  </table></div>
+
+  <h3>왜 이 라이브러리들을 골랐나</h3>
+  <p>검증된 도구를 쓰고, 덜 쓰이는 것은 맨 뒤 예비로만 두었습니다. 2026-10-09 기준 GitHub 별과 PyPI 월 다운로드입니다.</p>
+  <div class="tbl"><table>
+    <tr><th>라이브러리</th><th>역할</th><th class="num">GitHub 별</th><th class="num">월 다운로드</th></tr>
+    <tr><td>trafilatura</td><td>본문 추출 1순위</td><td class="num">6,941</td><td class="num">1,294만</td></tr>
+    <tr><td>feedparser</td><td>RSS 읽기</td><td class="num">2,438</td><td class="num">1,663만</td></tr>
+    <tr><td>httpx</td><td>HTTP 요청</td><td class="num">15,540</td><td class="num">6억 1,850만</td></tr>
+    <tr><td>readability-lxml</td><td>본문 추출 예비</td><td class="num">2,898</td><td class="num">134만</td></tr>
+    <tr><td>newspaper4k</td><td>본문 추출 마지막 예비</td><td class="num">1,150</td><td class="num">20만</td></tr>
+  </table></div>
+
+  <h2 id="limits"><span class="no">08</span>한계와 실패 (정직하게 말할 것)</h2>
+  <div class="cards">
+    <div class="card"><h4>자바스크립트로만 그리는 사이트 4곳</h4><p>SBS Biz, SBS연예뉴스, 스타뉴스, Arirang TV는 본문과 링크를 HTML이 아닌 별도 요청으로 받아 옵니다. 진짜 브라우저(Playwright)가 필요합니다. 설치는 했고 연결은 다음 단계입니다.</p></div>
+    <div class="card"><h4>봇 차단 사이트</h4><p>매일경제(Cloudflare), 뉴욕타임스(Datadome)는 브라우저 지문을 보고 거릅니다. 뚫으려 하면 IP 차단으로 번지고 약관 문제도 있어 대상에서 뺐습니다.</p></div>
+    <div class="card"><h4>robots.txt가 전부 금지한 7곳</h4><p>EBS, KBS World, MBC, TJB, 동아사이언스, 아시아경제, 톱데일리. 기술적으로는 받을 수 있지만 받지 않습니다.</p></div>
+    <div class="card"><h4>부분 유료 기사</h4><p>식품저널의 시장 보고서 시리즈, 시사IN 일부 기사는 앞부분만 저장됩니다. 로그인은 대신하지 않습니다.</p></div>
+    <div class="card"><h4>처음에 저지른 실수들</h4><p>CSS·이미지·목록 페이지를 기사로 고른 적이 18곳 있었고, 사이드바의 "많이 본 기사" 목록을 본문으로 집은 적도 있습니다. 둘 다 검증 규칙을 추가해 고쳤고 문서에 남겼습니다.</p></div>
+    <div class="card"><h4>클라이언트 측 계량은 안 보임</h4><p>뉴욕타임스처럼 브라우저 안에서 세는 페이월은 정적 요청으로는 확인할 수 없습니다. "계량 0곳"은 서버 쪽에서 막는 계량이 없다는 뜻입니다.</p></div>
+  </div>
+
+  <h2 id="talk"><span class="no">09</span>발표 포인트와 예상 질문</h2>
+  <h3>꼭 말할 다섯 가지</h3>
+  <ol class="steps">
+    <li><div><b>문제 정의</b><small>사이트마다 코드를 짜면 100곳이면 100벌. 우리는 "관찰해서 설정을 쓰는" 방식으로 바꿨다.</small></div></li>
+    <li><div><b>증명</b><small>보류해 둔 20곳을 코드 수정 없이 한 줄씩 추가해 20/20 작동. 바뀐 파일은 sites.yaml 하나.</small></div></li>
+    <li><div><b>검증 중심</b><small>찾은 RSS는 실제로 열어 보고, 기사 규칙은 기사 하나를 진짜 뽑아 본 뒤에만 채택. LLM 제안도 같은 검증을 거친다.</small></div></li>
+    <li><div><b>예의와 안전</b><small>robots.txt, 요청 간격, 차단 감지와 24시간 쿨다운. 실제로 차단당한 경험에서 나온 설계.</small></div></li>
+    <li><div><b>정직한 한계</b><small>JS 사이트 4곳, 봇 차단 2곳, robots 금지 7곳은 못 하거나 안 한다. 숫자로 말한다.</small></div></li>
+  </ol>
+  <h3>예상 질문</h3>
+  <div class="qa">
+    <details><summary>Q. 그냥 네이버 뉴스를 긁으면 더 쉽지 않나요?</summary><p>쉽습니다. 하지만 과제는 "범용 뉴스 크롤러"였고, 네이버 뉴스는 한 사이트입니다. 한국어 오픈소스 대부분이 네이버 전용인 것도 확인했습니다. 우리는 언론사 사이트 244곳을 직접 다룹니다.</p></details>
+    <details><summary>Q. 기사 주소 규칙을 어떻게 사람 없이 만드나요?</summary><p>RSS나 사이트맵에서 기사 주소 수십 개를 모아 공통 꼴을 뽑습니다. 숫자 ID 자리는 \d+, 분야 이름 자리는 [^/]+로 일반화하고, 그 규칙에 맞는 기사 하나를 실제로 받아 긴 문단과 날짜가 나와야 채택합니다.</p></details>
+    <details><summary>Q. 같은 기사가 두 번 저장되지 않나요?</summary><p>주소가 같으면 안 넣고, 주소가 달라도 본문 글자를 정리해 만든 해시가 같으면 같은 사이트 안에서는 중복으로 봅니다. 시연 때 2,027건 중 28건이 그렇게 걸러졌습니다.</p></details>
+    <details><summary>Q. 사이트에 피해를 주지 않나요?</summary><p>같은 사이트엔 1초 이상 간격, robots.txt의 금지 경로와 Crawl-delay 준수, 차단 응답이 오면 즉시 멈추고 24시간 쉽니다. 한 번 실행에 사이트당 새 기사 30건이 기본 상한입니다.</p></details>
+    <details><summary>Q. LLM은 어디에 쓰였나요?</summary><p>자동 조사가 아무것도 못 찾은 사이트에서만, 페이지의 링크 목록 같은 증거를 보내 기사 주소 규칙을 제안받습니다. 제안은 실제 링크에 3개 이상 맞고 기사 추출이 되는 것만 채택합니다. 자격 증명이 있는 환경에서 실호출 시험이 남아 있습니다.</p></details>
+    <details><summary>Q. 뉴욕타임스 같은 해외 사이트도 되나요?</summary><p>뉴욕타임스는 기사 첫 요청부터 봇 검사(Datadome)에 막혔고 약관도 자동 수집을 금지합니다. 공식 RSS의 제목·요약까지만 가능하고 본문은 대상에서 뺐습니다.</p></details>
+  </div>
+
+  <h2 id="gloss"><span class="no">10</span>용어 사전</h2>
+  <dl class="gloss">
+    <dt>크롤러</dt><dd>웹 페이지를 자동으로 돌며 내용을 모으는 프로그램. 배달 로봇.</dd>
+    <dt>RSS</dt><dd>사이트가 내놓는 "새 글 목록표". 제목·링크·날짜가 기계가 읽기 좋은 꼴로 들어 있다.</dd>
+    <dt>사이트맵</dt><dd>사이트의 모든 페이지 주소를 적은 목록. 뉴스 전용 사이트맵은 최근 기사만 담는다.</dd>
+    <dt>robots.txt</dt><dd>사이트가 로봇에게 "여긴 와도 되고 저긴 안 돼"라고 적어 둔 안내문.</dd>
+    <dt>정규식</dt><dd>글자 패턴을 적는 방법. <code>\d+</code>는 "숫자 아무거나", <code>[^/]+</code>는 "슬래시 빼고 아무 글자".</dd>
+    <dt>JSON</dt><dd>데이터를 중괄호와 따옴표로 적는 형식. 자바스크립트 사이트가 본문을 이 안에 숨겨 두기도 한다.</dd>
+    <dt>SQLite</dt><dd>파일 하나로 되는 작은 데이터베이스. 설치 없이 쓸 수 있어 창고로 썼다.</dd>
+    <dt>인코딩</dt><dd>글자를 숫자로 저장하는 규칙. 한국 사이트는 UTF-8과 EUC-KR이 섞여 있어 잘못 읽으면 한글이 깨진다.</dd>
+    <dt>페이월</dt><dd>돈을 내거나 로그인해야 기사를 보여 주는 벽. "몇 건 읽으면 막는" 계량형과 "특정 기사만 잠그는" 부분형이 있다.</dd>
+    <dt>봇 차단</dt><dd>사이트가 "사람이 아닌 프로그램"을 알아보고 막는 것. Datadome, Cloudflare 같은 업체 서비스가 많다.</dd>
+    <dt>Playwright</dt><dd>코드로 조종하는 진짜 크롬. 자바스크립트가 그린 화면까지 읽을 수 있지만 느리고 무겁다.</dd>
+    <dt>LLM</dt><dd>Claude 같은 대형 언어 모델. 여기서는 사람이 할 "이 사이트 기사 주소 규칙 추측"을 대신하고, 결과는 코드가 검증한다.</dd>
+  </dl>
+
+  <h3>직접 시연할 때 치는 명령 (순서대로)</h3>
+<pre class="cmd">cd C:\Users\bang7\Desktop\claude\news-crawler
+python -m pytest                                   # 39 passed
+python main.py add-site slownews.kr --name 슬로우뉴스   # 코드 수정 없이 새 사이트 등록
+python main.py crawl --only slownews.kr --limit-per-site 5
+python main.py stats
+python main.py export --site slownews.kr --format csv</pre>
+
+  <div class="foot">자료 기준일 2026-10-10. 모든 수치는 저장소 docs/ 폴더의 평가 문서에서 가져왔습니다. 그림은 클릭하면 크게 볼 수 있습니다.</div>
+</div>
+
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="그림 크게 보기">
+  <div class="lb-bar">
+    <span class="lb-title"></span>
+    <button type="button" class="lb-out" aria-label="축소">−</button>
+    <span class="lb-zoom">100%</span>
+    <button type="button" class="lb-in" aria-label="확대">+</button>
+    <button type="button" class="lb-fit">화면에 맞춤</button>
+    <button type="button" class="lb-close">닫기 ✕</button>
+  </div>
+  <div class="lb-view"><div class="lb-stage"></div></div>
+  <div class="lb-hint">마우스 휠로 확대·축소, 끌어서 이동, Esc 로 닫기. 키보드 + − 0 도 됩니다.</div>
+</div>
+
+<script>
+(function () {
+  var lb = document.getElementById("lightbox");
+  var stage = lb.querySelector(".lb-stage"), view = lb.querySelector(".lb-view");
+  var title = lb.querySelector(".lb-title"), zoomLabel = lb.querySelector(".lb-zoom");
+  var scale = 1, tx = 0, ty = 0, baseW = 1400, baseH = 800, drag = null;
+
+  function apply() {
+    stage.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+    zoomLabel.textContent = Math.round(scale * 100) + "%";
+  }
+  function fit() {
+    var r = view.getBoundingClientRect();
+    scale = Math.max(0.1, Math.min((r.width - 32) / baseW, (r.height - 32) / baseH, 6));
+    tx = (r.width - baseW * scale) / 2;
+    ty = (r.height - baseH * scale) / 2;
+    apply();
+  }
+  function zoomAt(factor, cx, cy) {
+    var r = view.getBoundingClientRect();
+    if (cx == null) { cx = r.width / 2; cy = r.height / 2; }
+    var ns = Math.max(0.1, Math.min(scale * factor, 10));
+    tx = cx - (cx - tx) * (ns / scale);
+    ty = cy - (cy - ty) * (ns / scale);
+    scale = ns;
+    apply();
+  }
+  function open(fig) {
+    var svg = fig.querySelector("svg");
+    if (!svg) { return; }   // 그림이 아직 안 그려졌으면 아무 일도 하지 않는다
+    var clone = svg.cloneNode(true);
+    var vb = (svg.getAttribute("viewBox") || "").split(/[\s,]+/).map(Number);
+    var box = svg.getBoundingClientRect();
+    // 배율 100% = 그림이 원래 그려진 크기(뷰박스). 글자가 읽히도록 처음엔 최소 130%로 연다
+    if (vb.length === 4 && vb[2] > 0) { baseW = Math.round(vb[2]); baseH = Math.round(vb[3]); }
+    else { baseW = Math.round(box.width) || 1200; baseH = Math.round(box.height) || 600; }
+    clone.removeAttribute("style");
+    clone.setAttribute("width", baseW);
+    clone.setAttribute("height", baseH);
+    clone.style.maxWidth = "none";
+    stage.innerHTML = "";
+    stage.appendChild(clone);
+    var cap = fig.querySelector(".cap");
+    title.textContent = cap ? cap.textContent : "";
+    lb.classList.add("open");
+    document.body.style.overflow = "hidden";
+    fit();
+    if (scale < 1.3) {   // 넓은 그림은 화면에 맞추면 글자가 작아지므로 읽히는 배율로 열고, 왼쪽 시작점을 보여 준다
+      var r = view.getBoundingClientRect();
+      scale = 1.3;
+      tx = Math.max(16, (r.width - baseW * scale) / 2);
+      ty = Math.max(16, (r.height - baseH * scale) / 2);
+      apply();
+    }
+    lb.querySelector(".lb-close").focus();
+  }
+  function close() {
+    lb.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".figure").forEach(function (fig) {
+    var btn = document.createElement("button");
+    btn.className = "zoom-btn";
+    btn.type = "button";
+    btn.textContent = "크게 보기 ⤢";
+    fig.appendChild(btn);
+    fig.addEventListener("click", function () { open(fig); });
+  });
+  lb.querySelector(".lb-in").addEventListener("click", function () { zoomAt(1.25); });
+  lb.querySelector(".lb-out").addEventListener("click", function () { zoomAt(0.8); });
+  lb.querySelector(".lb-fit").addEventListener("click", fit);
+  lb.querySelector(".lb-close").addEventListener("click", close);
+  view.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    var r = view.getBoundingClientRect();
+    zoomAt(e.deltaY < 0 ? 1.15 : 0.87, e.clientX - r.left, e.clientY - r.top);
+  }, { passive: false });
+  view.addEventListener("pointerdown", function (e) {
+    drag = { x: e.clientX, y: e.clientY, tx: tx, ty: ty };
+    view.classList.add("dragging");
+    try { view.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  view.addEventListener("pointermove", function (e) {
+    if (!drag) { return; }
+    tx = drag.tx + (e.clientX - drag.x);
+    ty = drag.ty + (e.clientY - drag.y);
+    apply();
+  });
+  function endDrag() { drag = null; view.classList.remove("dragging"); }
+  view.addEventListener("pointerup", endDrag);
+  view.addEventListener("pointercancel", endDrag);
+  view.addEventListener("dblclick", function (e) {
+    var r = view.getBoundingClientRect();
+    zoomAt(1.6, e.clientX - r.left, e.clientY - r.top);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!lb.classList.contains("open")) { return; }
+    if (e.key === "Escape") { close(); }
+    else if (e.key === "+" || e.key === "=") { zoomAt(1.25); }
+    else if (e.key === "-") { zoomAt(0.8); }
+    else if (e.key === "0") { fit(); }
+  });
+  window.addEventListener("resize", function () { if (lb.classList.contains("open")) { fit(); } });
+})();
+</script>
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+  } else {
+    document.querySelectorAll("pre.mermaid").forEach(function (el) {
+      var note = document.createElement("div");
+      note.textContent = "그림을 그리는 스크립트를 불러오지 못했습니다. 인터넷에 연결된 상태에서 다시 열어 주세요.";
+      note.style.cssText = "color:#b9541c;font-size:13px;margin:4px 0 8px";
+      el.parentNode.insertBefore(note, el);
+    });
+  }
+</script>
+</body>
+</html>
