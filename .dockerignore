@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.git/
+.pytest_cache/
+*.egg-info/
+data/
+*.log
+.mcp.json
+docs/
+tests/
+scripts/
+study-guide.html

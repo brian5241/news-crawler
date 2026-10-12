@@ -1,0 +1,12 @@
+services:
+  crawler:
+    build: .
+    container_name: news-crawler
+    volumes:
+      # 내 컴퓨터의 data/ 폴더와 연결 → DB가 컨테이너 밖에 보존됨
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    # 기본: 전체 사이트 크롤링
+    # 특정 사이트만: docker compose run crawler python main.py crawl --only chosun.com
+    command: ["python", "main.py", "crawl", "--limit-per-site", "30", "--report", "data/report.md"]
