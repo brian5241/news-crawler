@@ -301,6 +301,89 @@ def cmd_cc_crawl(args: argparse.Namespace) -> int:
     return 0
 
 
+# ---------------------------------------------------------------- guardian
+def cmd_guardian(args: argparse.Namespace) -> int:
+    from crawler.guardian import GuardianClient
+    gc = GuardianClient(api_key=args.api_key)
+    if not gc.has_key and args.guardian_cmd != "sections":
+        print("Guardian API 키가 필요합니다.")
+        print("  발급: https://bonobo.capi.gutools.co.uk/register/developer")
+        print("  사용: python main.py guardian --api-key YOUR_KEY search korea")
+        print("  또는: set GUARDIAN_API_KEY=YOUR_KEY (환경변수)")
+        gc.close()
+        return 1
+    with gc:
+        if args.guardian_cmd == "sections":
+            sections = gc.sections()
+            print(f"Guardian 섹션 ({len(sections)}개):")
+            for s in sections:
+                print(f"  {s['id']:<30} {s['name']}")
+            return 0
+
+        if args.guardian_cmd == "search":
+            articles, total, pages = gc.search(
+                args.query, section=args.section,
+                from_date=args.from_date, to_date=args.to_date,
+                order_by=args.order_by, page=args.page, page_size=args.page_size,
+            )
+            print(f"검색 결과: {total}건 (페이지 {args.page}/{pages})")
+            for i, a in enumerate(articles, 1):
+                ok = "O" if a.ok else "X"
+                print(f"  {i:3}. [{ok}] {a.date or '날짜없음'} | {a.title[:60]}")
+                print(f"       {a.url}")
+            return 0
+
+        if args.guardian_cmd == "crawl":
+            articles = gc.search_all(
+                args.query, section=args.section,
+                from_date=args.from_date, to_date=args.to_date,
+                order_by=args.order_by, limit=args.limit,
+            )
+            ok_articles = [a for a in articles if a.ok]
+            print(f"수집: {len(articles)}건 (본문 성공 {len(ok_articles)}건)")
+            if not articles:
+                return 1
+
+            if args.save_db:
+                from crawler.extract import Article
+                with Storage(args.db) as storage:
+                    saved = dup = 0
+                    for a in ok_articles:
+                        art = Article(
+                            url=a.url, title=a.title, text=a.text,
+                            date=a.date, author=a.author,
+                            publisher="The Guardian", extractor="guardian-api",
+                            text_length=a.text_length, ok=True,
+                        )
+                        outcome = storage.add_article(art, site_domain="theguardian.com",
+                                                       site_name="The Guardian", source="guardian-api")
+                        if outcome == "stored":
+                            saved += 1
+                        elif outcome == "duplicate":
+                            dup += 1
+                    print(f"DB 저장: {saved}건, 중복 {dup}건 → {args.db}")
+
+            if args.out:
+                import json as _json
+                os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
+                with open(args.out, "w", encoding="utf-8") as f:
+                    for a in articles:
+                        f.write(_json.dumps(a.to_dict(), ensure_ascii=False) + "\n")
+                print(f"JSONL 저장: {args.out}")
+
+            if not args.save_db and not args.out:
+                for i, a in enumerate(ok_articles[:5], 1):
+                    print(f"\n--- {i}. {a.title} ---")
+                    print(f"날짜: {a.date}  기자: {a.author}  섹션: {a.section}")
+                    preview = a.text[:300] + " …" if len(a.text) > 300 else a.text
+                    print(preview)
+                if len(ok_articles) > 5:
+                    print(f"\n… 외 {len(ok_articles) - 5}건 (--out 또는 --save-db 로 저장)")
+            return 0
+
+    return 1
+
+
 def cmd_unblock(args: argparse.Namespace) -> int:
     with Storage(args.db) as storage:
         n = storage.clear_block(None if args.all else args.site)
@@ -404,6 +487,34 @@ def build_parser() -> argparse.ArgumentParser:
     cc.add_argument("--save-db", action="store_true", help="성공한 기사를 news.db 에도 저장")
     cc.add_argument("--db", default=DEFAULT_DB)
     cc.set_defaults(func=cmd_cc_crawl)
+
+    # ---- Guardian API
+    g = sub.add_parser("guardian", help="The Guardian API 로 기사 검색·수집")
+    g.add_argument("--api-key", help="Guardian API 키 (또는 GUARDIAN_API_KEY 환경변수)")
+    g.add_argument("--db", default=DEFAULT_DB)
+    gsub = g.add_subparsers(dest="guardian_cmd", required=True)
+
+    gs = gsub.add_parser("search", help="기사 검색")
+    gs.add_argument("query", nargs="?", help="검색어 (예: 'korea climate')")
+    gs.add_argument("--section", help="섹션 필터 (예: world, technology, sport)")
+    gs.add_argument("--from-date", help="시작일 YYYY-MM-DD")
+    gs.add_argument("--to-date", help="종료일 YYYY-MM-DD")
+    gs.add_argument("--order-by", default="newest", choices=("newest", "oldest", "relevance"))
+    gs.add_argument("--page", type=int, default=1)
+    gs.add_argument("--page-size", type=int, default=20)
+
+    gc = gsub.add_parser("crawl", help="기사 수집 (여러 페이지)")
+    gc.add_argument("query", nargs="?", help="검색어")
+    gc.add_argument("--section", help="섹션 필터")
+    gc.add_argument("--from-date", help="시작일 YYYY-MM-DD")
+    gc.add_argument("--to-date", help="종료일 YYYY-MM-DD")
+    gc.add_argument("--order-by", default="newest", choices=("newest", "oldest", "relevance"))
+    gc.add_argument("--limit", type=int, default=100, help="최대 수집 건수")
+    gc.add_argument("--save-db", action="store_true", help="DB(news.db)에도 저장")
+    gc.add_argument("--out", help="JSONL 저장 경로")
+
+    gsc = gsub.add_parser("sections", help="사용 가능한 섹션 목록")
+    g.set_defaults(func=cmd_guardian)
 
     return p
 
