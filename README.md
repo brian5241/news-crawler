@@ -34,6 +34,9 @@ flowchart LR
     F --> E[extract.py<br/>5단 폴백 + 메타데이터 정규화]
     E --> DB[(storage.py<br/>SQLite: articles / failures / runs / site_state)]
     DB --> X[export csv/jsonl · stats]
+    G[guardian.py<br/>Guardian Content API] --> DB
+    N[nyt.py<br/>NYT Article Search API] --> DB
+    CC[commoncrawl.py<br/>CC-INDEX → WARC] --> DB
 ```
 
 | 파일 | 역할 | 단계 |
@@ -46,7 +49,9 @@ flowchart LR
 | `crawler/pipeline.py` | 수집 → 추출 → 저장. 저장된 주소 제외, robots.txt·Crawl-delay, 차단 쿨다운 | 4 |
 | `crawler/storage.py` | SQLite 저장소. 본문 해시 중복 제거, 실패·실행 기록, 차단 상태, CSV/JSONL 내보내기 | 4 |
 | `crawler/llm_assist.py` | 자동 탐지가 빈 사이트에 Claude 제안(기사 URL 규칙·목록 페이지·RSS)을 받아 검증 후 반영 | 7 |
-| `main.py` | CLI: `add-site`, `discover`, `list-sites`, `crawl`, `export`, `stats`, `unblock`, `extract` | 5 |
+| `crawler/guardian.py` | Guardian Content API 클라이언트. 본문 전체 수집, 섹션/날짜/검색어 필터, .env 자동 로드 | 8 |
+| `crawler/nyt.py` | NYT Article Search + Top Stories API 클라이언트. 제목/요약/첫 문단 수집, 분당 5건 제한 대응 | 9 |
+| `main.py` | CLI: `add-site`, `discover`, `list-sites`, `crawl`, `export`, `stats`, `unblock`, `extract`, `guardian`, `nyt` | 5 |
 | `tests/` | 네트워크 없이 도는 pytest 39개 (가짜 응답으로 파이프라인·차단·중복까지) | - |
 | `scripts/` | 246개 언론사 1차 조사, 추출 품질 평가, 탐지 일괄 평가, 유료벽 점검 | - |
 
@@ -169,6 +174,74 @@ Claude 는 기사 URL 정규식·기사 예시·목록 페이지·RSS 후보를 
 ## 관련 오픈소스
 비슷한 목표의 프로젝트(news-please, fundus, KoreaNewsCrawler 등)와 우리가 쓴 라이브러리의 별·다운로드 수, 차이점은 [`docs/related_opensource.md`](docs/related_opensource.md).
 
+## 외부 뉴스 API 연동 (2026-10-12~13)
+
+웹 스크래핑 외에 공식 API를 통한 수집 경로를 추가했다.
+API 키는 `.env` 파일에 저장하면 자동으로 읽는다 (`.env` 는 gitignore 에 포함).
+
+### The Guardian (`crawler/guardian.py`)
+
+Content API 를 통해 **본문 전체**를 받을 수 있다.
+
+```bash
+# .env 에 GUARDIAN_API_KEY=키 추가 후:
+python main.py guardian sections                                    # 섹션 목록 (81개)
+python main.py guardian search korea --page-size 10                 # 기사 검색
+python main.py guardian search "climate change" --section environment --order-by relevance
+python main.py guardian crawl korea --limit 50 --save-db            # 수집 → DB 저장
+python main.py guardian crawl --section world --from-date 2026-10-01 --out data/guardian.jsonl
+```
+
+- 키 발급: https://bonobo.capi.gutools.co.uk/register/developer (무료, 즉시 발급)
+- 일 5,000건, 본문·메타데이터 전부 포함
+- 검증 결과: 검색 32,494건 중 본문 성공률 100%, 평균 본문 9,864자
+
+### New York Times (`crawler/nyt.py`)
+
+Article Search API + Top Stories API. **본문 전체는 제공하지 않고** 제목·요약·첫 문단을 돌려준다.
+전문이 필요하면 URL 로 별도 추출을 시도할 수 있다.
+
+```bash
+# .env 에 NYT_API_KEY=키 추가 후:
+python main.py nyt top --section world                              # 편집자 선정 주요 기사
+python main.py nyt search "south korea" --section World             # 기사 검색
+python main.py nyt crawl "south korea" --limit 30 --save-db         # 수집 → DB 저장 (느림: 분당 5건)
+python main.py nyt crawl --begin-date 2026-10-01 --out data/nyt.jsonl
+```
+
+- 키 발급: https://developer.nytimes.com/accounts/create (무료)
+- 분당 5건, 일 500건 제한 → 10건당 12초 대기
+- 1851년부터 검색 가능, Lucene 필터 지원 (`--section`, 날짜 범위)
+
+### Common Crawl (`crawler/commoncrawl.py`)
+
+CC-INDEX + WARC 아카이브에서 과거 기사를 가져온다. API 키 불필요.
+단, 2019년 이후 NYT·Bloomberg 등 대형 매체는 `robots.txt` 로 CCBot 을 차단해 최근 인덱스에 결과가 없다.
+
+```bash
+python main.py cc-indices                                           # 사용 가능한 인덱스 목록
+python main.py cc-search hani.co.kr --limit 10                      # 인덱스 검색
+python main.py cc-crawl hani.co.kr --limit 20 --save-db             # WARC 에서 기사 추출 → DB 저장
+```
+
+## 진행 현황 요약
+
+| 단계 | 내용 | 상태 |
+|------|------|------|
+| 1. 기사 추출 | 5단 폴백 + 메타데이터 정규화 | 완료 (196곳 98%) |
+| 2. 사이트 탐지 | robots → RSS → 사이트맵 → URL 패턴 → 목록 페이지 | 완료 (246곳 95%) |
+| 3. 설정 관리 | sites.yaml 읽기/쓰기, 키 기반 upsert | 완료 |
+| 4. 수집 파이프라인 | 멀티스레드 크롤, 중복 제거, 차단 감지/쿨다운 | 완료 (223곳 2,027건) |
+| 5. CLI | add-site, crawl, export, stats 등 | 완료 |
+| 6-1. 임베디드 JSON | Arc XP, Next.js 등 JS 앱의 HTML 속 JSON 추출 | 완료 (조선일보 등) |
+| 6-2. Playwright | JS 렌더링 사이트 (SBS Biz, Arirang TV 등) | 기본 구현 |
+| 7. LLM 보조 탐지 | Claude 에 증거 보내 기사 규칙 제안 → 검증 | 완료 |
+| 8. Guardian API | 본문 전체 수집, 섹션/날짜/검색어 필터 | 완료 |
+| 9. NYT API | 제목/요약/첫 문단 수집, Top Stories | 완료 |
+| 10. Common Crawl | WARC 아카이브에서 과거 기사 추출 | 완료 |
+
 ## 남은 단계
-6. Playwright 폴백 — JS 렌더링·봇 차단 사이트
+- Playwright 폴백 강화 — JS 렌더링·봇 차단 사이트
 - `ANTHROPIC_API_KEY` 가 있는 환경에서 `--llm` 실제 호출 시험
+- GDELT / NewsAPI 등 추가 API 연동
+- 배치 수집 자동화 (스케줄러)
