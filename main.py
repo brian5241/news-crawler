@@ -384,6 +384,93 @@ def cmd_guardian(args: argparse.Namespace) -> int:
     return 1
 
 
+# ---------------------------------------------------------------- nyt
+def cmd_nyt(args: argparse.Namespace) -> int:
+    from crawler.nyt import NYTClient
+    nc = NYTClient(api_key=args.api_key)
+    if not nc.has_key:
+        print("NYT API 키가 필요합니다.")
+        print("  발급: https://developer.nytimes.com/accounts/create")
+        print("  사용: python main.py nyt --api-key YOUR_KEY search korea")
+        print("  또는: .env 파일에 NYT_API_KEY=YOUR_KEY 추가")
+        nc.close()
+        return 1
+    with nc:
+        if args.nyt_cmd == "top":
+            articles = nc.top_stories(args.section)
+            print(f"NYT Top Stories [{args.section}] ({len(articles)}건):")
+            for i, a in enumerate(articles, 1):
+                print(f"  {i:3}. {a.date or '날짜없음'} | {a.title[:70]}")
+                if a.abstract:
+                    print(f"       {a.abstract[:80]}")
+            return 0
+
+        if args.nyt_cmd == "search":
+            fq = f'section_name:("{args.section}")' if args.section else None
+            articles, total = nc.search(
+                args.query, fq=fq,
+                begin_date=args.begin_date, end_date=args.end_date,
+                sort=args.sort, page=args.page,
+            )
+            print(f"검색 결과: {total}건 (페이지 {args.page + 1}, 10건/페이지)")
+            for i, a in enumerate(articles, 1):
+                print(f"  {i:3}. {a.date or '날짜없음'} | {a.title[:70]}")
+                print(f"       {a.url}")
+            return 0
+
+        if args.nyt_cmd == "crawl":
+            fq = f'section_name:("{args.section}")' if args.section else None
+            print(f"수집 시작 (분당 5건 제한, 느릴 수 있음)…")
+            articles = nc.search_all(
+                args.query, fq=fq,
+                begin_date=args.begin_date, end_date=args.end_date,
+                sort=args.sort, limit=args.limit,
+            )
+            ok_articles = [a for a in articles if a.ok]
+            print(f"수집: {len(articles)}건 (유효 {len(ok_articles)}건)")
+            if not articles:
+                return 1
+
+            if args.save_db:
+                from crawler.extract import Article
+                with Storage(args.db) as storage:
+                    saved = dup = 0
+                    for a in ok_articles:
+                        text = f"{a.abstract}\n\n{a.lead_paragraph}".strip() if a.lead_paragraph and a.lead_paragraph != a.abstract else a.abstract
+                        art = Article(
+                            url=a.url, title=a.title, text=text,
+                            date=a.date, author=a.author,
+                            publisher="The New York Times", extractor="nyt-api",
+                            text_length=len(text), ok=len(text) >= 20,
+                        )
+                        outcome = storage.add_article(art, site_domain="nytimes.com",
+                                                       site_name="NYT", source="nyt-api")
+                        if outcome == "stored":
+                            saved += 1
+                        elif outcome == "duplicate":
+                            dup += 1
+                    print(f"DB 저장: {saved}건, 중복 {dup}건 → {args.db}")
+
+            if args.out:
+                import json as _json
+                os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
+                with open(args.out, "w", encoding="utf-8") as f:
+                    for a in articles:
+                        f.write(_json.dumps(a.to_dict(), ensure_ascii=False) + "\n")
+                print(f"JSONL 저장: {args.out}")
+
+            if not args.save_db and not args.out:
+                for i, a in enumerate(ok_articles[:5], 1):
+                    print(f"\n--- {i}. {a.title} ---")
+                    print(f"날짜: {a.date}  기자: {a.author}  섹션: {a.section}")
+                    print(a.abstract)
+                if len(ok_articles) > 5:
+                    print(f"\n… 외 {len(ok_articles) - 5}건 (--out 또는 --save-db 로 저장)")
+            return 0
+
+    return 1
+
+
 def cmd_unblock(args: argparse.Namespace) -> int:
     with Storage(args.db) as storage:
         n = storage.clear_block(None if args.all else args.site)
@@ -487,6 +574,34 @@ def build_parser() -> argparse.ArgumentParser:
     cc.add_argument("--save-db", action="store_true", help="성공한 기사를 news.db 에도 저장")
     cc.add_argument("--db", default=DEFAULT_DB)
     cc.set_defaults(func=cmd_cc_crawl)
+
+    # ---- NYT API
+    n = sub.add_parser("nyt", help="New York Times API 로 기사 검색·수집")
+    n.add_argument("--api-key", help="NYT API 키 (또는 NYT_API_KEY 환경변수)")
+    n.add_argument("--db", default=DEFAULT_DB)
+    nsub = n.add_subparsers(dest="nyt_cmd", required=True)
+
+    ns = nsub.add_parser("search", help="기사 검색")
+    ns.add_argument("query", nargs="?", help="검색어 (예: 'south korea')")
+    ns.add_argument("--section", help="섹션 필터 (예: World, Business, Technology)")
+    ns.add_argument("--begin-date", help="시작일 YYYY-MM-DD")
+    ns.add_argument("--end-date", help="종료일 YYYY-MM-DD")
+    ns.add_argument("--sort", default="newest", choices=("newest", "oldest", "relevance"))
+    ns.add_argument("--page", type=int, default=0, help="페이지 번호 (0부터)")
+
+    nc = nsub.add_parser("crawl", help="기사 수집 (여러 페이지, 느림)")
+    nc.add_argument("query", nargs="?", help="검색어")
+    nc.add_argument("--section", help="섹션 필터")
+    nc.add_argument("--begin-date", help="시작일 YYYY-MM-DD")
+    nc.add_argument("--end-date", help="종료일 YYYY-MM-DD")
+    nc.add_argument("--sort", default="newest", choices=("newest", "oldest", "relevance"))
+    nc.add_argument("--limit", type=int, default=50, help="최대 수집 건수 (10건당 12초)")
+    nc.add_argument("--save-db", action="store_true", help="DB(news.db)에도 저장")
+    nc.add_argument("--out", help="JSONL 저장 경로")
+
+    nt = nsub.add_parser("top", help="Top Stories (편집자 선정 주요 기사)")
+    nt.add_argument("--section", default="home", help="섹션 (home, world, business, technology, …)")
+    n.set_defaults(func=cmd_nyt)
 
     # ---- Guardian API
     g = sub.add_parser("guardian", help="The Guardian API 로 기사 검색·수집")
